@@ -1,21 +1,71 @@
 import Image from 'next/image'
 import React from 'react'
 import logo from '@/assets/images/logo-white.png'
-import UrbanHive_transparent_logo from '@/assets/images/UrbanHive_transparent_logo.png'
-import profileDefault from '@/assets/images/logo-white.png'
+import UrbanHive_transparent_logo from '@/assets/images/logo-no-background.png'
+import hamburger from '@/assets/images/hamburger.png'
+
 
 const Navbar = () => {
     return (
-        <nav>
-            <div>
-                {/* logo */}
-                <Image
-                    src={UrbanHive_transparent_logo} />
+        <nav className='topbar'>
+            <div className='flex justify-between w-full lg:w-auto'>
+                <div className='lg:hidden'>
+                    {/* hamburger menu for mobile */}
+                    <Image
+                        src={hamburger}
+                        width={30}
+                        height={30}
+                    />
+                </div>
+                <div className=''>
+                    {/* logo */}
+                    <Image
+                        src={UrbanHive_transparent_logo}
+                        height={125}
+                        width={125} />
+                </div>
             </div>
-            <div>
-                {/* navlinks */}
+            <div className="hidden md:ml-6 lg:block">
+                {/* navas */}
+                <div className="flex space-x-2">
+                    <a
+                        href="/index.html"
+                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                    >Home</a
+                    >
+                    <a
+                        href="/properties.html"
+                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                    >About</a
+                    >
+                    <a
+                        href="/properties.html"
+                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                    >Properties</a
+                    >
+                    <a
+                        href="/add-property.html"
+                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                    >Add Property</a
+                    >
+                </div>
+
+                <div>
+                    <div>
+                        {/* login/signup if user is not logged in*/}
+                        <a href="/profile">
+
+                        </a>
+
+                    </div>
+                    <div>
+                        {/* profile if user is logged in */}
+                    </div>
+
+                </div>
+
             </div>
-        </nav>
+        </nav >
     )
 }
 export default Navbar
@@ -70,7 +120,7 @@ export default Navbar
 //                             <div className="flex space-x-2">
 //                                 <a
 //                                     href="/index.html"
-//                                     className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+//                                     className="text-white bg-primary hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
 //                                 >Home</a
 //                                 >
 //                                 <a

@@ -11,7 +11,7 @@ export const metadata = {
 const MainLayout = ({ children }) => {
     return (
         <html lang='en'>
-            <body>
+            <body className='bg-background'>
                 <Navbar />
                 <div>{children}</div>
             </body>

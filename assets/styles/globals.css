@@ -1,3 +1,79 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background and Foreground */
+    --background: 57, 100%, 97%; /* Cream color */
+    --foreground: 0, 0%, 0%; /* Black for text */
+
+    /* Primary Colors */
+    --primary: 263, 44%, 41%; /* Primary color #5d3c94 */
+    --primary-foreground: 0, 0%, 100%; /* White text on primary background */
+
+    /* Secondary Colors */
+    --secondary: 263, 33%, 53%; /* Variant of primary color */
+    --secondary-foreground: 0, 0%, 100%; /* White text on secondary background */
+
+    /* Border and Input */
+    --border: 0, 0%, 86%; /* Light grey for borders */
+    --input: 0, 0%, 96%; /* Very light grey for input fields */
+
+    /* Variations for UI Elements */
+    --muted: 240, 4.8%, 95.9%; /* Muted background for less prominent elements */
+    --muted-foreground: 240, 3.8%, 46.1%; /* Muted foreground for less prominent text */
+
+    --accent: 240, 4.8%, 95.9%; /* Accent background for highlights */
+    --accent-foreground: 240, 5.9%, 10%; /* Accent foreground for highlights */
+
+    --destructive: 0, 84.2%, 60.2%; /* Destructive action background (e.g., delete) */
+    --destructive-foreground: 0, 0%, 98%; /* Destructive action text */
+
+    /* Ring (focus outlines) */
+    --ring: 346.8, 77.2%, 49.8%; /* Focus ring color */
+
+    /* Border Radius */
+    --radius: 0.5rem; /* Default border radius */
+  }
+
+  .dark {
+    /* Background and Foreground */
+    --background: 0, 0%, 18%; /* Dark background */
+    --foreground: 0, 0%, 100%; /* White for text */
+
+    /* Primary Colors */
+    --primary: 263, 44%, 41%; /* Primary color remains the same */
+    --primary-foreground: 0, 0%, 100%; /* White text on primary background */
+
+    /* Secondary Colors */
+    --secondary: 263, 33%, 53%; /* Secondary color remains the same */
+    --secondary-foreground: 0, 0%, 100%; /* White text on secondary background */
+
+    /* Border and Input */
+    --border: 0, 0%, 33%; /* Dark grey for borders */
+    --input: 0, 0%, 24%; /* Dark grey for input fields */
+
+    /* Variations for UI Elements */
+    --muted: 0, 0%, 15%; /* Muted background for less prominent elements */
+    --muted-foreground: 240, 5%, 64.9%; /* Muted foreground for less prominent text */
+
+    --accent: 12, 6.5%, 15.1%; /* Accent background for highlights */
+    --accent-foreground: 0, 0%, 98%; /* Accent foreground for highlights */
+
+    --destructive: 0, 62.8%, 30.6%; /* Destructive action background (e.g., delete) */
+    --destructive-foreground: 0, 85.7%, 97.3%; /* Destructive action text */
+
+    /* Ring (focus outlines) */
+    --ring: 346.8, 77.2%, 49.8%; /* Focus ring color */
+
+    /* Border Radius */
+    --radius: 0.5rem; /* Default border radius */
+  }
+}
+
+@layer utilities {
+  .topbar {
+    @apply flex justify-between items-center bg-transparent py-4 max-w-7xl mx-auto px-4 lg:px-8;
+  }
+}
