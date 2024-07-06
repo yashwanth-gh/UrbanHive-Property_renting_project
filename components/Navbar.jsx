@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 import logo from '@/assets/images/logo-white.png'
-import UrbanHive_transparent_logo from '@/assets/images/logo-no-background.png'
+import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
+import person from '@/assets/images/user.png'
+import bell from '@/assets/images/bell.png'
 
 
 const Navbar = () => {
@@ -25,41 +27,112 @@ const Navbar = () => {
                         width={125} />
                 </div>
             </div>
-            <div className="hidden md:ml-6 lg:block">
-                {/* navas */}
-                <div className="flex space-x-2">
+            <div className="hidden md:ml-6 lg:flex gap-8">
+                {/* navs */}
+                <div className="flex space-x-2 text-md font-semibold text-foreground">
                     <a
                         href="/index.html"
-                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                        className=" hover:text-primary px-3 py-2"
                     >Home</a
                     >
                     <a
                         href="/properties.html"
-                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                        className=" hover:text-primary px-3 py-2"
                     >About</a
                     >
                     <a
                         href="/properties.html"
-                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                        className=" hover:text-primary px-3 py-2"
                     >Properties</a
                     >
                     <a
                         href="/add-property.html"
-                        className=" text-lg font-semibold text-primary hover:text-black px-3 py-2"
+                        className="hover:text-primary px-3 py-2"
                     >Add Property</a
                     >
                 </div>
 
-                <div>
-                    <div>
-                        {/* login/signup if user is not logged in*/}
-                        <a href="/profile">
-
+                <div className='flex justify-center items-center text-sm font-semibold text-foreground'>
+                    {/*login/signup if user is NOT logged in*/}
+                    <div className='hidden rounded-full px-2 py-1 border border-black hover:shadow-lg'>
+                        <a href="/profile" className='flex justify-center items-center'>
+                            <Image
+                                className='h-4 w-4'
+                                src={person}
+                            />
+                            <span className='px-1 pl-2'>Login / Signup</span>
                         </a>
 
                     </div>
-                    <div>
-                        {/* profile if user is logged in */}
+                    {/* profile andf notification if user is logged in */}
+                    <div className='flex gap-4'>
+
+                        <div className='relative rounded-full'>
+                            {/* notification bell */}
+                            <a href="/messages.html">
+                                <Image
+                                    className='h-8 w-8 rounded-full'
+                                    src={bell}
+                                />
+                                <span className='absolute top-0 right-0 bg-red-500 rounded-full px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
+                            </a>
+                        </div>
+
+                        <div className="relative ml-3">
+                            <div>
+                                <button
+                                    type="button"
+                                    className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    id="user-menu-button"
+                                    aria-expanded="false"
+                                    aria-haspopup="true"
+                                >
+                                    <span className="absolute -inset-1.5"></span>
+                                    <span className="sr-only">Open user menu</span>
+                                    <Image
+                                        className="h-8 w-8 px-1 py-1 border-2 border-foreground rounded-full"
+                                        src={person}
+                                        alt=""
+                                    />
+                                </button>
+                            </div>
+
+                            {/* <!-- Profile dropdown --> */}
+                            <div
+                                id="user-menu"
+                                className="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="user-menu-button"
+                                tabIndex="-1"
+                            >
+                                <a
+                                    href="/profile.html"
+                                    className="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem"
+                                    tabIndex="-1"
+                                    id="user-menu-item-0"
+                                >Your Profile</a
+                                >
+                                <a
+                                    href="saved-properties.html"
+                                    className="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem"
+                                    tabIndex="-1"
+                                    id="user-menu-item-2"
+                                >Saved Properties</a
+                                >
+                                <a
+                                    href="#"
+                                    className="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem"
+                                    tabIndex="-1"
+                                    id="user-menu-item-2"
+                                >Sign Out</a
+                                >
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -69,6 +142,10 @@ const Navbar = () => {
     )
 }
 export default Navbar
+
+
+
+
 // {/* <nav className="bg-cyan-500 border-b border-blue-500">
 //             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 //                 <div className="relative flex h-20 items-center justify-between">

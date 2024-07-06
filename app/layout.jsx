@@ -11,6 +11,9 @@ export const metadata = {
 const MainLayout = ({ children }) => {
     return (
         <html lang='en'>
+            <head>
+                <link rel="icon" href="/favicon.png" />
+            </head>
             <body className='bg-background'>
                 <Navbar />
                 <div>{children}</div>
