@@ -1,67 +1,73 @@
+"use client"
+
 import Image from 'next/image'
-import React from 'react'
-import logo from '@/assets/images/logo-white.png'
+import React, { useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
 import person from '@/assets/images/user.png'
 import bell from '@/assets/images/bell.png'
+import Link from 'next/link'
 
 
 const Navbar = () => {
+    const [isMenuActive, setIsMenuActive] = useState(false);
+    const [isProfileDropdownActive, setIsProfileDropdownActive] = useState(false);
     return (
         <nav className='topbar'>
             <div className='flex justify-between w-full lg:w-auto'>
-                <div className='lg:hidden'>
-                    {/* hamburger menu for mobile */}
+                {/* hamburger menu for mobile */}
+                <div className='lg:hidden flex justify-center items-center cursor-pointer'
+                    onClick={() => setIsMenuActive(prev => !prev)}
+                >
                     <Image
                         src={hamburger}
-                        width={30}
-                        height={30}
+                        className='h-5 w-5'
                     />
                 </div>
                 <div className=''>
                     {/* logo */}
-                    <Image
-                        src={UrbanHive_transparent_logo}
-                        height={125}
-                        width={125} />
+                    <Link href="/">
+                        <Image
+                            src={UrbanHive_transparent_logo}
+                            height={125}
+                            width={125} />
+                    </Link>
                 </div>
             </div>
             <div className="hidden md:ml-6 lg:flex gap-8">
                 {/* navs */}
                 <div className="flex space-x-2 text-md font-semibold text-foreground">
-                    <a
-                        href="/index.html"
+                    <Link
+                        href="/"
                         className=" hover:text-primary px-3 py-2"
-                    >Home</a
-                    >
-                    <a
-                        href="/properties.html"
+                    >Home</Link>
+                    <Link
+                        href="/about"
                         className=" hover:text-primary px-3 py-2"
-                    >About</a
+                    >About</Link
                     >
-                    <a
-                        href="/properties.html"
+                    <Link
+                        href="/properties"
                         className=" hover:text-primary px-3 py-2"
-                    >Properties</a
+                    >Properties</Link
                     >
-                    <a
-                        href="/add-property.html"
+                    <Link
+                        href="/property/add"
                         className="hover:text-primary px-3 py-2"
-                    >Add Property</a
+                    >Add Property</Link
                     >
                 </div>
 
                 <div className='flex justify-center items-center text-sm font-semibold text-foreground'>
                     {/*login/signup if user is NOT logged in*/}
                     <div className='hidden rounded-full px-2 py-1 border border-black hover:shadow-lg'>
-                        <a href="/profile" className='flex justify-center items-center'>
+                        <Link href="/profile" className='flex justify-center items-center'>
                             <Image
                                 className='h-4 w-4'
                                 src={person}
                             />
                             <span className='px-1 pl-2'>Login / Signup</span>
-                        </a>
+                        </Link>
 
                     </div>
                     {/* profile andf notification if user is logged in */}
@@ -69,13 +75,13 @@ const Navbar = () => {
 
                         <div className='relative rounded-full'>
                             {/* notification bell */}
-                            <a href="/messages.html">
+                            <Link href="/messages">
                                 <Image
                                     className='h-8 w-8 rounded-full'
                                     src={bell}
                                 />
                                 <span className='absolute top-0 right-0 bg-red-500 rounded-full px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="relative ml-3">
@@ -86,6 +92,7 @@ const Navbar = () => {
                                     id="user-menu-button"
                                     aria-expanded="false"
                                     aria-haspopup="true"
+                                    onClick={() => setIsProfileDropdownActive(prev => !prev)}
                                 >
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
@@ -98,39 +105,41 @@ const Navbar = () => {
                             </div>
 
                             {/* <!-- Profile dropdown --> */}
-                            <div
-                                id="user-menu"
-                                className="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="user-menu-button"
-                                tabIndex="-1"
-                            >
-                                <a
-                                    href="/profile.html"
-                                    className="block px-4 py-2 text-sm text-gray-700"
-                                    role="menuitem"
+                            {isProfileDropdownActive && (
+                                <div
+                                    id="user-menu"
+                                    className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="user-menu-button"
                                     tabIndex="-1"
-                                    id="user-menu-item-0"
-                                >Your Profile</a
                                 >
-                                <a
-                                    href="saved-properties.html"
-                                    className="block px-4 py-2 text-sm text-gray-700"
-                                    role="menuitem"
-                                    tabIndex="-1"
-                                    id="user-menu-item-2"
-                                >Saved Properties</a
-                                >
-                                <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700"
-                                    role="menuitem"
-                                    tabIndex="-1"
-                                    id="user-menu-item-2"
-                                >Sign Out</a
-                                >
-                            </div>
+                                    <Link
+                                        href="/profile"
+                                        className="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabIndex="-1"
+                                        id="user-menu-item-0"
+                                    >Your Profile</Link
+                                    >
+                                    <Link
+                                        href="/properties/saved"
+                                        className="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabIndex="-1"
+                                        id="user-menu-item-2"
+                                    >Saved Properties</Link
+                                    >
+                                    <Link
+                                        href="#"
+                                        className="block px-4 py-2 text-sm text-gray-700"
+                                        role="menuitem"
+                                        tabIndex="-1"
+                                        id="user-menu-item-2"
+                                    >Sign Out</Link
+                                    >
+                                </div>
+                            )}
                         </div>
 
                     </div>
@@ -138,6 +147,38 @@ const Navbar = () => {
                 </div>
 
             </div>
+
+            {/*// ^--------------------MOBILE MENU--------------------------*/}
+            {isMenuActive && (
+                <div className="lg:hidden" id="mobile-menu">
+                    <div className="space-y-1 px-2 pb-3 pt-2">
+                        <a
+                            href="/index.html"
+                            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Home</a
+                        >
+                        <a
+                            href="/properties.html"
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Properties</a
+                        >
+                        <a
+                            href="/add-property.html"
+                            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        >Add Property</a
+                        >
+                        <button
+                            className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+                        >
+                            <i className="fa-brands fa-google mr-2"></i>
+                            <span>Login or Register</span>
+                        </button>
+                    </div>
+                </div>
+            )}
+            {/*// ^--------------------MOBILE MENU--------------------------*/}
+
+
         </nav >
     )
 }
