@@ -5,11 +5,11 @@
 @layer base {
   :root {
     /* Background and Foreground */
-    --background: 57, 100%, 97%; /* Cream color */
+    --background: 0, 0%, 95%; /* Cream color */
     --foreground: 0, 0%, 0%; /* Black for text */
 
     /* Primary Colors */
-    --primary: 263, 44%, 41%; /* Primary color #5d3c94 */
+    --primary: 177, 72%, 37%; /* Primary color for buttons */
     --primary-foreground: 0, 0%, 100%; /* White text on primary background */
 
     /* Secondary Colors */
@@ -74,6 +74,6 @@
 
 @layer utilities {
   .topbar {
-    @apply flex justify-between items-center bg-transparent py-4 max-w-7xl mx-auto px-4 lg:px-8;
+    @apply relative flex justify-between items-center bg-transparent py-4 max-w-7xl mx-auto px-4 lg:px-8;
   }
 }

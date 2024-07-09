@@ -7,6 +7,7 @@ import hamburger from '@/assets/images/hamburger.png'
 import person from '@/assets/images/user.png'
 import bell from '@/assets/images/bell.png'
 import Link from 'next/link'
+import { FaBell, FaGoogle, FaRegBell, FaRegUser } from 'react-icons/fa';
 
 
 const Navbar = () => {
@@ -58,28 +59,30 @@ const Navbar = () => {
                     >
                 </div>
 
-                <div className='flex justify-center items-center text-sm font-semibold text-foreground'>
+                <div className='flex justify-center items-center text-sm font-semibold'>
                     {/*login/signup if user is NOT logged in*/}
-                    <div className='hidden rounded-full px-2 py-1 border border-black hover:shadow-lg'>
+                    <div className='rounded-full px-2.5 py-1.5 hover:shadow-lg text-primary-foreground bg-primary'>
                         <Link href="/profile" className='flex justify-center items-center'>
-                            <Image
+                            {/* <Image
                                 className='h-4 w-4'
                                 src={person}
-                            />
+                            /> */}
+                            <FaGoogle />
                             <span className='px-1 pl-2'>Login / Signup</span>
                         </Link>
 
                     </div>
                     {/* profile andf notification if user is logged in */}
-                    <div className='flex gap-4'>
+                    <div className='lg:hidden flex gap-4'>
 
                         <div className='relative rounded-full'>
                             {/* notification bell */}
                             <Link href="/messages">
-                                <Image
+                                {/* <Image
                                     className='h-8 w-8 rounded-full'
                                     src={bell}
-                                />
+                                /> */}
+                                <FaRegBell className='h-8 w-8' />
                                 <span className='absolute top-0 right-0 bg-red-500 rounded-full px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
                             </Link>
                         </div>
@@ -88,7 +91,7 @@ const Navbar = () => {
                             <div>
                                 <button
                                     type="button"
-                                    className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                    className="relative flex rounded-full text-sm focus:outline-none    "
                                     id="user-menu-button"
                                     aria-expanded="false"
                                     aria-haspopup="true"
@@ -96,11 +99,12 @@ const Navbar = () => {
                                 >
                                     <span className="absolute -inset-1.5"></span>
                                     <span className="sr-only">Open user menu</span>
-                                    <Image
+                                    {/* <Image
                                         className="h-8 w-8 px-1 py-1 border-2 border-foreground rounded-full"
                                         src={person}
                                         alt=""
-                                    />
+                                    /> */}
+                                    <FaRegUser className='h-7 w-7' />
                                 </button>
                             </div>
 
@@ -150,27 +154,27 @@ const Navbar = () => {
 
             {/*// ^--------------------MOBILE MENU--------------------------*/}
             {isMenuActive && (
-                <div className="lg:hidden" id="mobile-menu">
-                    <div className="space-y-1 px-2 pb-3 pt-2">
+                <div className="lg:hidden absolute top-full left-0 right-0 " id="mobile-menu">
+                    <div>
                         <a
                             href="/index.html"
-                            className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                            className="bg-primary text-white block px-3 py-2 text-base font-medium"
                         >Home</a
                         >
                         <a
                             href="/properties.html"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                            className="text-accent-foreground active:bg-muted-foreground block px-3 py-2 text-base font-medium"
                         >Properties</a
                         >
                         <a
                             href="/add-property.html"
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                            className="text-accent-foreground active:bg-muted-foreground block px-3 py-2 text-base font-medium"
                         >Add Property</a
                         >
                         <button
-                            className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4"
+                            className="flex items-center bg-primary text-primary-foreground font-semibold active:shadow-mlg rounded-full px-2 py-1 my-4 ml-2"
                         >
-                            <i className="fa-brands fa-google mr-2"></i>
+                            <FaGoogle className='mr-2' />
                             <span>Login or Register</span>
                         </button>
                     </div>
