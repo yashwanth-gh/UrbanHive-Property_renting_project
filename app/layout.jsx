@@ -14,7 +14,7 @@ const MainLayout = ({ children }) => {
             <head>
                 <link rel="icon" href="/favicon.png" />
             </head>
-            <body className='bg-background'>
+            <body className='bg-background text-foreground'>
                 <Navbar />
                 <div>{children}</div>
             </body>
