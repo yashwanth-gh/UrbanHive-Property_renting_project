@@ -13,6 +13,9 @@ module.exports = {
       xl: "1440px",
     },
     extend: {
+      backdropBlur: {
+        xs: "2px",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

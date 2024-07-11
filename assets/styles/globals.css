@@ -9,7 +9,7 @@
     --foreground: 0, 0%, 0%; /* Black for text */
 
     /* Primary Colors */
-    --primary: 177, 72%, 37%; /* Primary color for buttons */
+    --primary: 177, 72%, 32%; /* Primary color for buttons */
     --primary-foreground: 0, 0%, 100%; /* White text on primary background */
 
     /* Secondary Colors */
@@ -74,7 +74,11 @@
 
 @layer utilities {
   .topbar {
-    @apply relative flex justify-between items-center bg-transparent py-4 max-w-7xl mx-auto px-4 lg:px-8;
+    @apply relative flex justify-between items-center bg-transparent backdrop-blur-sm py-4 max-w-7xl mx-auto px-4 lg:px-8 z-10;
+  }
+
+  .hero {
+    @apply relative -mt-20 h-screen flex flex-col justify-center items-center;
   }
 
   #mobile-menu {

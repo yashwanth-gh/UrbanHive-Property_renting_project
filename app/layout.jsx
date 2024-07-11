@@ -3,9 +3,9 @@ import '@/assets/styles/globals.css'
 import Navbar from '@/components/Navbar'
 
 export const metadata = {
-    title: 'UrbanHive | Together, at Home!',
+    title: 'UrbanHive | Discover Your Hive, Where Dreams Thrive',
     description: 'Find your dream rental property',
-    keywords: 'rental, property, search, find, home, find rentals, find properties, affordable home',
+    keywords: 'rental, property,office space, search, find, home, find rentals, find properties, affordable home',
 }
 
 const MainLayout = ({ children }) => {
