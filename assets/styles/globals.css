@@ -46,10 +46,6 @@
     --primary: 263, 44%, 41%; /* Primary color remains the same */
     --primary-foreground: 0, 0%, 100%; /* White text on primary background */
 
-    /* Secondary Colors */
-    --secondary: 263, 33%, 53%; /* Secondary color remains the same */
-    --secondary-foreground: 0, 0%, 100%; /* White text on secondary background */
-
     /* Border and Input */
     --border: 0, 0%, 33%; /* Dark grey for borders */
     --input: 0, 0%, 24%; /* Dark grey for input fields */
@@ -70,6 +66,40 @@
     /* Border Radius */
     --radius: 0.5rem; /* Default border radius */
   }
+
+  .montserrat-light {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .montserrat-regular {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .montserrat-semibold {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .montserrat-bold {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .montserrat-extra {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+  }
 }
 
 @layer utilities {
@@ -79,6 +109,10 @@
 
   .hero {
     @apply relative -mt-20 h-screen flex flex-col justify-center items-center;
+  }
+
+  .hero-content {
+    @apply absolute bottom-2/3 translate-y-3/4 text-center lg:px-28 mx-auto;
   }
 
   #mobile-menu {

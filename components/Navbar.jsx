@@ -158,7 +158,7 @@ const Navbar = () => {
             </div>
 
             {/*// ^--------------------MOBILE MENU--------------------------*/}
-            <div className={`lg:hidden absolute top-full left-0 right-0 transition-transform duration-150 ease-in-out ${isMenuActive ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`} id="mobile-menu">
+            <div className={`lg:hidden absolute top-full left-0 right-0 bg-background transition-transform duration-150 ease-in-out ${isMenuActive ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`} id="mobile-menu">
                 <div className="flex flex-col bg-white shadow-lg ">
                     <Link
                         href="/"
