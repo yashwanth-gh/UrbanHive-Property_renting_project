@@ -17,7 +17,7 @@ const Hero = () => {
                     Discover Your Hive, Where Dreams Thrive
                 </h1>
 
-                <div className='mt-10 md:mt-20 lg:mt-36 mx-auto max-w-4xl w-full'>
+                <div className='mt-10 md:mt-28 lg:mt-36 mx-auto max-w-4xl w-full'>
                     <div className='inline-block w-fit bg-green-900 bg-opacity-10 backdrop-blur-md rounded-t-2xl px-4 py-3'>
                         <p className='montserrat-semibold'> Let's find your <span className='text-primary'>HIVE :)</span></p>
                     </div>
@@ -35,7 +35,7 @@ const Hero = () => {
                         </div>
                         <div className="w-full md:w-2/5 md:pl-2 flex">
                             <label htmlFor="property-type" className="sr-only">Property Type</label>
-                            <div className='bg-primary-foreground text-sm text-gray-400 flex justify-normal items-center pl-4 pr-2 rounded-l-full border-r-2'>
+                            <div className='bg-primary-foreground text-sm text-border flex justify-normal items-center pl-4 pr-2 rounded-l-full border-r-2'>
                                 <FaRegBuilding />
                                 <p className='text-nowrap'>&nbsp;Type</p>
                             </div>

@@ -5,26 +5,26 @@
 @layer base {
   :root {
     /* Background and Foreground */
-    --background: 0, 0%, 95%; /* Cream color */
+    --background: 0, 0%, 100%; /* white color */
     --foreground: 0, 0%, 0%; /* Black for text */
 
     /* Primary Colors */
-    --primary: 177, 72%, 32%; /* Primary color for buttons */
+    --primary: 177, 72%, 32%; /*custom darkgreen Primary color for buttons */
     --primary-foreground: 0, 0%, 100%; /* White text on primary background */
 
     /* Secondary Colors */
-    --secondary: 263, 33%, 53%; /* Variant of primary color */
+    --secondary: 171, 72%, 70%; /* Variant of primary color */
     --secondary-foreground: 0, 0%, 100%; /* White text on secondary background */
 
     /* Border and Input */
-    --border: 0, 0%, 86%; /* Light grey for borders */
+    --border: 0, 0%, 70%; /* Light grey for borders */
     --input: 0, 0%, 96%; /* Very light grey for input fields */
 
     /* Variations for UI Elements */
     --muted: 240, 4.8%, 95.9%; /* Muted background for less prominent elements */
     --muted-foreground: 240, 3.8%, 46.1%; /* Muted foreground for less prominent text */
 
-    --accent: 240, 4.8%, 95.9%; /* Accent background for highlights */
+    --accent: 240, 4.8%, 92.9%; /* Accent background for highlights */
     --accent-foreground: 240, 5.9%, 10%; /* Accent foreground for highlights */
 
     --destructive: 0, 84.2%, 60.2%; /* Destructive action background (e.g., delete) */
@@ -102,17 +102,56 @@
   }
 }
 
+@layer base {
+  * {
+    @apply border-border custom-scrollbar;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply montserrat-regular;
+  }
+}
+
 @layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+
+  .container {
+    @apply max-w-screen-xl mx-auto px-3 md:px-4 lg:px-6;
+  }
+
   .topbar {
-    @apply relative flex justify-between items-center bg-transparent backdrop-blur-sm py-4 max-w-7xl mx-auto px-4 lg:px-8 z-10;
+    @apply container flex justify-between items-center bg-background py-3 z-10 md:px-10 lg:px-20 sticky top-0;
   }
 
   .hero {
-    @apply relative -mt-20 h-screen flex flex-col justify-center items-center;
+    @apply container relative -mt-20 h-screen flex flex-col justify-center items-center;
   }
 
   .hero-content {
-    @apply absolute bottom-2/3 translate-y-3/4 text-center lg:px-28 mx-auto;
+    @apply absolute bottom-2/3 translate-y-3/4 text-center px-1 lg:px-28 mx-auto;
   }
 
   #mobile-menu {
