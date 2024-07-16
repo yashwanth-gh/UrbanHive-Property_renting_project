@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitterSquare } from 'react-icons/fa';
+import { FaFacebook, FaInstagramSquare, FaTwitterSquare } from 'react-icons/fa';
 import logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ const Footer = () => {
                             <FaTwitterSquare className='text-2xl' />
                         </Link>
                         <Link href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <FaInstagram className='text-2xl' />
+                            <FaInstagramSquare className='text-2xl' />
                         </Link>
                     </div>
                 </div>

@@ -56,8 +56,8 @@ const Hero = () => {
                             </select>
                         </div>
                         <button
-                            type="submit"
-                            className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-full text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary"
+                            type="submit "
+                            className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-full text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary hover:opacity-85"
                         >
                             Search
                         </button>

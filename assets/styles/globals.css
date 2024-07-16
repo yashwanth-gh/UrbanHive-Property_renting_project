@@ -17,7 +17,7 @@
     --secondary-foreground: 0, 0%, 100%; /* White text on secondary background */
 
     /* Border and Input */
-    --border: 0, 0%, 70%; /* Light grey for borders */
+    --border: 0, 0%, 59%; /* Light grey for borders */
     --input: 0, 0%, 96%; /* Very light grey for input fields */
 
     /* Variations for UI Elements */
