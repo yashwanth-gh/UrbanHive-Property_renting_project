@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import ClipLoader from "react-spinners/ClipLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const override = {
     display: "block",
@@ -9,7 +9,7 @@ const override = {
 
 const LoadingPage = ({ loading }) => {
     return (
-        <ClipLoader
+        <PuffLoader
             color={'#18918b'}
             loading={loading}
             cssOverride={override}

@@ -1,9 +1,12 @@
 import React from 'react'
 import PropertyCard from '@/components/PropertyCard';
-import properties from '@/properties.json';
 import Link from 'next/link';
 
-const FeaturedProperties = () => {
+import { getProperties } from '@/utils/requests';
+
+const FeaturedProperties = async () => {
+    const properties = await getProperties();
+
     const recentProperties = properties.sort(() => Math.random() - Math.random()).slice(0, 3);
 
     return (
