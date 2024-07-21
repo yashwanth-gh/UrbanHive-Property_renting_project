@@ -43,10 +43,8 @@ module.exports = {
         },
         ring: "hsl(var(--ring))",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      gridTemplateColumns: {
+        "70/30": "70% 28%",
       },
     },
   },

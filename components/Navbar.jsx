@@ -34,6 +34,7 @@ const Navbar = () => {
                             src={UrbanHive_transparent_logo}
                             className='h-7 lg:h-10 w-auto'
                             alt='logo'
+                            priority
                         />
                     </Link>
                 </div>

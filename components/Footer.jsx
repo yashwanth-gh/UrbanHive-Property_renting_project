@@ -10,10 +10,10 @@ const Footer = () => {
             <div className="container mx-auto flex-col items-start justify-center px-4">
                 <div className="flex flex-wrap justify-center items-center mb-6 md:mb-8 text-sm font-medium">
                     <ul className="flex flex-col md:flex-row justify-center items-center gap-1 md:gap-4 lg:gap-8">
-                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground"><Link href="/properties">Properties</Link></li>
-                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground"><Link href="/terms">Terms of Service</Link></li>
-                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground"><Link href="/about">About Us</Link></li>
-                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground"><Link href="/contact">Contact</Link></li>
+                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground transition-all duration-100 ease-in"><Link href="/properties">Properties</Link></li>
+                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground transition-all duration-100 ease-in"><Link href="/terms">Terms of Service</Link></li>
+                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground transition-all duration-100 ease-in"><Link href="/about">About Us</Link></li>
+                        <li className="pb-0.5 hover:border-b-2 hover:pb-0 hover:border-foreground transition-all duration-100 ease-in"><Link href="/contact">Contact</Link></li>
                     </ul>
                 </div>
                 <div className="mb-6 md:mb-2">
@@ -31,7 +31,7 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col lg:flex-row justify-between items-center '>
                     <div className="mb-4 md:mb-0">
-                        <Image src={logo} className="h-8 w-auto" alt="Logo" />
+                        <Image src={logo} className="h-8 w-auto" alt="Logo" priority />
                     </div>
                     <div className="mt-4 md:mt-0">
                         <p className="text-sm text-gray-500">
