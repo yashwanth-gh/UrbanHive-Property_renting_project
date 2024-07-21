@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { FaExclamationCircle } from 'react-icons/fa'
@@ -5,12 +6,18 @@ import { FaExclamationCircle } from 'react-icons/fa'
 const NotFoundPage = () => {
     return (
         <section className=" min-h-screen flex-grow">
-            <div className="container m-auto max-w-2xl py-24">
+            <div className="container m-auto max-w-2xl py-20">
                 <div
-                    className="bg-white px-6 py-24 mb-4 shadow-md rounded-md border m-4 md:m-0"
+                    className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
                 >
                     <div className="flex justify-center">
-                        <FaExclamationCircle className='text-destructive text-6xl' />
+                        {/* <FaExclamationCircle className='text-destructive text-6xl' /> */}
+                        <Image
+                            src={'/images/404img1.svg'}
+                            width={0}
+                            height={0}
+                            sizes='100vw'
+                            className='w-96 h-auto' />
                     </div>
                     <div className="text-center">
                         <h1 className="text-3xl font-bold mt-4 mb-2">Page Not Found</h1>
@@ -19,7 +26,7 @@ const NotFoundPage = () => {
                         </p>
                         <Link
                             href="/"
-                            className="bg-primary hover:opacity-70 text-white font-bold py-4 px-6 rounded"
+                            className="bg-primary hover:opacity-70 text-white font-bold py-2 md:py-4 px-4 md:px-6 rounded"
                         >Go Home</Link
                         >
                     </div>

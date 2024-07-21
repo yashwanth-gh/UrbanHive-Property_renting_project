@@ -8,7 +8,7 @@ import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import LoadingPage from '@/app/loading';
 import Link from 'next/link';
 import PropertyPageDetails from '@/components/PropertyPageDetails';
-import { FaChevronCircleLeft } from 'react-icons/fa';
+import { FaBookmark, FaChevronCircleLeft, FaShare } from 'react-icons/fa';
 
 
 const PropertyPage = () => {
@@ -69,12 +69,12 @@ const PropertyPage = () => {
                             <button
                                 className="bg-primary hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center"
                             >
-                                <i className="fas fa-bookmark mr-2"></i> Bookmark Property
+                                <FaBookmark className='mr-3' /> Bookmark Property
                             </button>
                             <button
                                 className="bg-foreground hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center"
                             >
-                                <i className="fas fa-share mr-2"></i> Share Property
+                                <FaShare className='mr-3' /> Share Property
                             </button>
 
                             <div className="bg-white p-6 rounded-lg shadow-md">
