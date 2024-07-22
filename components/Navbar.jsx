@@ -1,19 +1,33 @@
 "use client"
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
 import { FaGoogle, FaRegBell, FaRegUser } from 'react-icons/fa';
 import { usePathname } from 'next/navigation'
-
+import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 
 const Navbar = () => {
+    const { data: session } = useSession()
     const [isMenuActive, setIsMenuActive] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [providers, setProviders] = useState(null);
     const [isProfileDropdownActive, setIsProfileDropdownActive] = useState(false);
     const pathname = usePathname();
+
+
+    useEffect(() => {
+        const setAuthProvider = async () => {
+            const res = await getProviders();
+            setProviders(res);
+        }
+
+
+        setAuthProvider();
+    }, [])
+
+
     return (
         <nav className='topbar'>
             <div className='flex justify-start gap-6 lg:w-auto '>
@@ -56,7 +70,7 @@ const Navbar = () => {
                         className={`${pathname === "/properties" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
                     >Properties</Link
                     >
-                    {isLoggedIn && (<Link
+                    {session && (<Link
                         href="/property/add"
                         className={`${pathname === "/property/add" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
                     >Add Property</Link
@@ -64,18 +78,19 @@ const Navbar = () => {
                 </div>
 
                 <div className='flex justify-center items-center text-sm font-semibold'>
-                    {(!isLoggedIn) ? (
+                    {(!session) ? (
                         //^ login/signup if user is NOT logged in
                         <div className='rounded-full px-2.5 py-1.5 hover:shadow-lg text-primary-foreground bg-primary'>
-                            <Link href="/profile" className='flex justify-center items-center'>
-                                {/* <Image
-                                className='h-4 w-4'
-                                src={person}
-                            /> */}
-                                <FaGoogle />
-                                <span className='lg:px-1 lg:pl-2 pl-1.5'>Login / Signup</span>
-                            </Link>
-
+                            {providers ? (Object.values(providers).map((provider, index) => (
+                                <button className='flex justify-center items-center' key={index}
+                                    onClick={() => signIn(provider.id)}>
+                                    <FaGoogle />
+                                    <span className='lg:px-1 lg:pl-2 pl-1.5'>Login / Signup</span>
+                                </button>
+                            ))) : (
+                                <span className='animate-pulse'>Loading...</span>
+                            )
+                            }
                         </div>
                     ) : (
                         //^ profile andf notification if user is logged in
@@ -173,7 +188,7 @@ const Navbar = () => {
                         href="/properties"
                         className={`${pathname === "/properties" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
                     >Properties</Link>
-                    {isLoggedIn && (<Link
+                    {session && (<Link
                         href="/property/add"
                         className={`${pathname === "/property/add" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
                     >Add Property</Link>)}
