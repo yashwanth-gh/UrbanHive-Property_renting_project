@@ -15,6 +15,7 @@ const Navbar = () => {
     const [providers, setProviders] = useState(null);
     const [isProfileDropdownActive, setIsProfileDropdownActive] = useState(false);
     const pathname = usePathname();
+    const googleProfileImage = session?.user?.image;
 
 
     useEffect(() => {
@@ -119,12 +120,18 @@ const Navbar = () => {
                                     >
                                         <span className="absolute -inset-1.5"></span>
                                         <span className="sr-only">Open user menu</span>
-                                        {/* <Image
-                                        className="h-8 w-8 px-1 py-1 border-2 border-foreground rounded-full"
-                                        src={person}
-                                        alt=""
-                                    /> */}
-                                        <FaRegUser className='h-7 w-7 text-foreground' />
+                                        {googleProfileImage ? (
+                                            <Image
+                                                className="h-8 w-8 rounded-full"
+                                                src={googleProfileImage}
+                                                alt="user"
+                                                width={40}
+                                                height={40}
+                                            />
+                                        ) : (
+                                            <FaRegUser className='h-7 w-7 text-foreground' />
+                                        )}
+
                                     </button>
                                 </div>
 
@@ -144,6 +151,9 @@ const Navbar = () => {
                                             role="menuitem"
                                             tabIndex="-1"
                                             id="user-menu-item-0"
+                                            onClick={() => {
+                                                setIsProfileDropdownActive(false);
+                                            }}
                                         >Your Profile</Link
                                         >
                                         <Link
@@ -152,6 +162,9 @@ const Navbar = () => {
                                             role="menuitem"
                                             tabIndex="-1"
                                             id="user-menu-item-2"
+                                            onClick={() => {
+                                                setIsProfileDropdownActive(false);
+                                            }}
                                         >Saved Properties</Link
                                         >
                                         <Link
@@ -160,6 +173,10 @@ const Navbar = () => {
                                             role="menuitem"
                                             tabIndex="-1"
                                             id="user-menu-item-2"
+                                            onClick={() => {
+                                                setIsProfileDropdownActive(false);
+                                                signOut();
+                                            }}
                                         >Sign Out</Link
                                         >
                                     </div>
@@ -179,25 +196,23 @@ const Navbar = () => {
                     <Link
                         href="/"
                         className={`${pathname === "/" ? 'bg-primary text-white' : ''}  block px-3 py-2 text-base font-medium`}
+                        onClick={() => { setIsMenuActive(false) }}
                     >Home</Link>
                     <Link
                         href="/about"
                         className={`${pathname === "/about" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
+                        onClick={() => { setIsMenuActive(false) }}
                     >About</Link>
                     <Link
                         href="/properties"
                         className={`${pathname === "/properties" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
+                        onClick={() => { setIsMenuActive(false) }}
                     >Properties</Link>
                     {session && (<Link
                         href="/property/add"
                         className={`${pathname === "/property/add" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
+                        onClick={() => { setIsMenuActive(false) }}
                     >Add Property</Link>)}
-                    {/*                     <button
-                        className="flex justify-center items-center bg-primary text-primary-foreground font-semibold active:shadow-lg rounded-full px-2 py-1 my-4 mx-2"
-                    >
-                        <FaGoogle className='mr-2' />
-                        <span>Login or Register</span>
-                    </button> */}
                 </div>
             </div>
             {/*// ^--------------------MOBILE MENU--------------------------*/}
