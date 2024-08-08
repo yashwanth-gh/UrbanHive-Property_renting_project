@@ -166,4 +166,87 @@
   #mobile-menu.opacity-100 {
     opacity: 1;
   }
+
+  /*^ -----------------checkbox style START ------------------  */
+  .checkbox-wrapper {
+    background-color: hsl(var(--secondary));
+    border-radius: 0.5rem;
+    border: 1px solid black;
+    padding: 1.3rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    height: 100%;
+    color: hsl(var(--foreground));
+    margin: 0.3em;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .uv-checkbox-wrapper {
+    display: inline-block;
+  }
+
+  .uv-checkbox {
+    display: none;
+  }
+
+  .uv-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    @media (max-width: 768px) {
+      font-weight: 400;
+      font-size: 0.8rem;
+      flex-direction: column;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+  }
+
+  .uv-checkbox-icon {
+    position: relative;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    border: 2px solid hsl(var(--secondary));
+    transition: border-color 0.3s ease, border-radius 0.3s ease;
+  }
+
+  .uv-checkmark {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    width: 1.9em;
+    height: 1.7em;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkbox-icon {
+    border-color: transparent;
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    background-color: black;
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkmark {
+    stroke-dashoffset: 0;
+  }
+
+  .uv-checkbox:checked + .uv-checkbox-label .uv-checkbox-text {
+    color: hsl(var(--primary));
+  }
+
+  /*^ -----------------checkbox style END------------------  */
 }

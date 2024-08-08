@@ -72,7 +72,7 @@ const Navbar = () => {
                     >Properties</Link
                     >
                     {session && (<Link
-                        href="/property/add"
+                        href="/properties/add"
                         className={`${pathname === "/property/add" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
                     >Add Property</Link
                     >)}
@@ -209,7 +209,7 @@ const Navbar = () => {
                         onClick={() => { setIsMenuActive(false) }}
                     >Properties</Link>
                     {session && (<Link
-                        href="/property/add"
+                        href="/properties/add"
                         className={`${pathname === "/property/add" ? 'bg-primary text-white' : ''} active:bg-muted-foreground block px-3 py-2 text-base font-medium`}
                         onClick={() => { setIsMenuActive(false) }}
                     >Add Property</Link>)}
