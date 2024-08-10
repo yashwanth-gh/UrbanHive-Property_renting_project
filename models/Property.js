@@ -80,6 +80,10 @@ const PropertySchema = new Schema(
       type: Boolean,
       default: false,
     },
+    agreement: {
+      type: Boolean,
+      required: true,
+    },
   },
   {
     timestamps: true,

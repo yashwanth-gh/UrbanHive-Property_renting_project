@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBed, FaCheckSquare, FaMapPin, FaRegBuilding, FaRulerCombined, FaShower } from 'react-icons/fa'
+import { FaBed, FaCheckCircle, FaCheckSquare, FaMapPin, FaRegBuilding, FaRulerCombined, FaShower } from 'react-icons/fa'
 
 const formatNumberToIndian = (number) => {
     return number.toLocaleString('en-IN');
@@ -9,7 +9,7 @@ const PropertyPageDetails = ({ property }) => {
     return (
         <main>
             <div
-                className="bg-primary-foreground p-6 rounded-lg shadow-md text-center md:text-left"
+                className="bg-primary-foreground p-2 md:p-6 rounded-lg shadow-md text-center md:text-left"
             >
                 <div className="text-border mb-4"><FaRegBuilding className=' inline-block mr-2' />{property.type}</div>
                 <h1 className="text-3xl font-extrabold mb-4">{property.name}</h1>
@@ -51,17 +51,17 @@ const PropertyPageDetails = ({ property }) => {
             <div className="bg-primary-foreground p-6 rounded-lg shadow-md mt-6">
                 <h3 className="text-lg font-bold mb-6">Description & Details</h3>
                 <div className="flex justify-center gap-8 lg:gap-10 mb-4">
-                    <p className='flex flex-col justify-center items-center'>
-                        <FaBed className='inline ml-2 text-border' /> {" "}
-                        <span className="inline text-xl font-bold">{property.beds}{" "}Beds</span>
+                    <p className='flex flex-col justify-center items-center text-center'>
+                        <FaBed className='hidden md:inline ml-2 text-border' />
+                        <span className="inline text-lg md:text-xl font-bold">{property.beds} {" "}Beds</span>
                     </p>
-                    <p className='flex flex-col justify-center items-center'>
-                        <FaShower className='inline ml-2 text-border' />{" "}
-                        <span className="inline text-xl font-bold">{property.baths}{" "}Baths</span>
+                    <p className='flex flex-col justify-center items-center text-center'>
+                        <FaShower className='hidden md:inline ml-2 text-border' />{" "}
+                        <span className="inline text-lg md:text-xl font-bold">{property.baths}{" "}Baths</span>
                     </p>
-                    <p className='flex flex-col justify-center items-center'>
-                        <FaRulerCombined className='inline ml-2 text-border' />{" "}
-                        <span className="inline text-xl font-bold">{property.square_feet}{" "}sqft</span>
+                    <p className='flex flex-col justify-center items-center text-center'>
+                        <FaRulerCombined className='hidden md:inline ml-2 text-border' />{" "}
+                        <span className="inline text-lg md:text-xl font-bold">{property.square_feet}{" "}sqft</span>
                     </p>
                 </div>
                 <p className="mb-4">
@@ -79,8 +79,8 @@ const PropertyPageDetails = ({ property }) => {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none"
                 >
                     {property.amenities.map((amenity, index) => (
-                        <li key={index}>
-                            <FaCheckSquare className='text-primary inline mr-2' />
+                        <li key={index} className='font-semibold mx-1 my-2'>
+                            <FaCheckCircle className='text-foreground inline mr-2 text-xl' />
                             {amenity}
                         </li>
                     ))}

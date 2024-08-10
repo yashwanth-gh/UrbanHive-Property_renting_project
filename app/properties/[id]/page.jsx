@@ -9,6 +9,7 @@ import LoadingPage from '@/app/loading';
 import Link from 'next/link';
 import PropertyPageDetails from '@/components/PropertyPageDetails';
 import { FaBookmark, FaChevronCircleLeft, FaShare } from 'react-icons/fa';
+import PropertyCarousel from '@/components/PropertyCarousel';
 
 
 const PropertyPage = () => {
@@ -59,8 +60,8 @@ const PropertyPage = () => {
                 </div>
             </div>
 
-            <section className="bg-secondary">
-                <div className="container m-auto py-10 px-6">
+            <section className="container bg-secondary rounded-b-lg">
+                <div className=" m-auto py-10 md:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
 
                         {!loading && property && <PropertyPageDetails property={property} />}
@@ -151,8 +152,7 @@ const PropertyPage = () => {
                     </div>
                 </div>
             </section>
-
-
+            {!loading && property && <PropertyCarousel images={property?.images} property={property} />}
         </section>
     )
 }

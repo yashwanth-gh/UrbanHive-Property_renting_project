@@ -18,6 +18,12 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  session: {
+    // Set the session duration in seconds (e.g., 30 days)
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    // Extend the session duration when the user interacts with the site
+    updateAge: 24 * 60 * 60, // 1 day
+  },
   callbacks: {
     //Invoked on successful signin
     async signIn({ profile }) {

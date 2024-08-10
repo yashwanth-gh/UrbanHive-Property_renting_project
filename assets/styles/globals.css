@@ -80,6 +80,12 @@
     font-weight: 400;
     font-style: normal;
   }
+  .montserrat-regular-dark {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
 
   .montserrat-semibold {
     font-family: "Montserrat", sans-serif;
@@ -107,7 +113,7 @@
     @apply border-border custom-scrollbar;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground montserrat-regular-dark;
   }
   h1,
   h2,
@@ -121,21 +127,22 @@
 
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
     height: 3px;
     border-radius: 1px;
+    background-color: white;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--background);
+    background: transparent;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-full;
+    @apply bg-gray-600 rounded-tl-full rounded-bl-full;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600;
+    @apply bg-gray-500 rounded-full;
   }
 
   .container {
@@ -171,8 +178,7 @@
   .checkbox-wrapper {
     background-color: hsl(var(--secondary));
     border-radius: 0.5rem;
-    border: 1px solid black;
-    padding: 1.3rem 1rem;
+
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 80%;
@@ -200,6 +206,7 @@
     justify-content: start;
     align-items: center;
     gap: 1rem;
+    padding: 1.3rem 0.8rem;
     @media (max-width: 768px) {
       font-weight: 400;
       font-size: 0.8rem;
