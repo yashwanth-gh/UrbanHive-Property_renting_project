@@ -7,9 +7,9 @@ const PropertyCarousel = ({ images, property }) => {
 
 
     return (
-        <section className='container my-4'>
+        <section className='container my-4 '>
             <h2 className='text-center text-xl md:text-2xl font-bold my-1 py-4'> Featured Images</h2>
-            <div className="grid md:grid-cols-3 md:grid-rows-2 gap-3 grid-cols-1 grid-rows-3">
+            <div className="grid md:grid-cols-3 md:grid-rows-2 gap-3 grid-cols-1 grid-rows-3 md:max-h-96">
                 <div className="md:col-span-2 md:row-span-2">
                     <Link
                         href={`/properties/${property._id}/images`}>

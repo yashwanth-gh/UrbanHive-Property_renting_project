@@ -1,24 +1,24 @@
 "use client"
-import addProperty from "@/app/actions/addProperty";
+
 import Checkbox from "@/components/Checkbox";
 import { useState } from "react";
 import MiniSpinner from "@/components/miniSpinner";
 import { toast } from "react-toastify";
+import updateProperty from "@/app/actions/updateProperty";
 
-
-const PropertyAddForm = () => {
+const PropertyEditForm = ({ property }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true);
         try {
-            const res = await addProperty(new FormData(event.target));
-            if (res && !res?.success) toast.error(res.message);
-            else toast.success("Property Added Successfully");
-        } catch (error) {
-            console.error("Error adding property:", error);
+            const res = await updateProperty(property._id, new FormData(event.target));
 
+            if (res && !res?.success) toast.error(res.message);
+            else toast.success("Property Updated Successfully");
+        } catch (error) {
+            console.error("Error Updating property:", error);
         } finally {
             setIsLoading(false);
         }
@@ -26,7 +26,7 @@ const PropertyAddForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2 className='text-3xl text-center font-semibold mb-6'>Add Property</h2>
+            <h2 className='text-3xl text-center font-semibold mb-6'>Edit Property</h2>
 
             <div className='mb-4'>
                 <label htmlFor='type' className='block text-gray-700 font-bold mb-2'>
@@ -35,6 +35,7 @@ const PropertyAddForm = () => {
                 <select
                     id='type'
                     name='type'
+                    defaultValue={property.type}
                     className='border rounded w-full py-2 px-3'
                     required
                 >
@@ -54,6 +55,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='name'
+                    defaultValue={property.name}
                     name='name'
                     className='border rounded w-full py-2 px-3 mb-2'
                     placeholder='eg. Beautiful Apartment In Miami'
@@ -69,6 +71,7 @@ const PropertyAddForm = () => {
                 </label>
                 <textarea
                     id='description'
+                    defaultValue={property.description}
                     name='description'
                     className='border rounded w-full py-2 px-3'
                     rows='4'
@@ -81,6 +84,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='street'
+                    defaultValue={property.location.street}
                     name='location.street'
                     className='border rounded w-full py-2 px-3 mb-2'
                     placeholder='Street'
@@ -88,6 +92,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='city'
+                    defaultValue={property.location.city}
                     name='location.city'
                     className='border rounded w-full py-2 px-3 mb-2'
                     placeholder='City'
@@ -96,6 +101,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='state'
+                    defaultValue={property.location.state}
                     name='location.state'
                     className='border rounded w-full py-2 px-3 mb-2'
                     placeholder='State'
@@ -104,6 +110,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='zipcode'
+                    defaultValue={property.location.zipcode}
                     name='location.zipcode'
                     className='border rounded w-full py-2 px-3 mb-2'
                     placeholder='Zipcode'
@@ -119,6 +126,7 @@ const PropertyAddForm = () => {
                         type='number'
                         min={0}
                         id='beds'
+                        defaultValue={property.beds}
                         name='beds'
                         className='border rounded w-full py-2 px-3'
                         required
@@ -132,6 +140,7 @@ const PropertyAddForm = () => {
                         type='number'
                         min={0}
                         id='baths'
+                        defaultValue={property.baths}
                         name='baths'
                         className='border rounded w-full py-2 px-3'
                         required
@@ -147,6 +156,7 @@ const PropertyAddForm = () => {
                     <input
                         type='number'
                         id='square_feet'
+                        defaultValue={property.square_feet}
                         min={0}
                         name='square_feet'
                         className='border rounded w-full py-2 px-3'
@@ -164,6 +174,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Wifi'
                             labelName='Wifi'
+                            isChecked={property.amenities.includes('Wifi')}
                         />
                     </div>
                     <div>
@@ -172,6 +183,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Full kitchen'
                             labelName='Full kitchen'
+                            isChecked={property.amenities.includes('Full kitchen')}
                         />
                     </div>
                     <div>
@@ -180,6 +192,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Washer & Dryer'
                             labelName='Washer & Dryer'
+                            isChecked={property.amenities.includes('Washer & Dryer')}
                         />
                     </div>
                     <div>
@@ -188,6 +201,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Free Parking'
                             labelName='Free Parking'
+                            isChecked={property.amenities.includes('Free Parking')}
                         />
                     </div>
                     <div>
@@ -196,6 +210,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Swimming Pool'
                             labelName='Swimming Pool'
+                            isChecked={property.amenities.includes('Swimming Pool')}
                         />
                     </div>
                     <div>
@@ -204,6 +219,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Hot Tub'
                             labelName='Hot Tub'
+                            isChecked={property.amenities.includes('Hot Tub')}
                         />
                     </div>
                     <div>
@@ -212,6 +228,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='24/7 Security'
                             labelName='24/7 Security'
+                            isChecked={property.amenities.includes('24/7 Security')}
                         />
                     </div>
                     <div>
@@ -220,6 +237,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Wheelchair Accessible'
                             labelName='Wheelchair Accessible'
+                            isChecked={property.amenities.includes('Wheelchair Accessible')}
                         />
                     </div>
                     <div>
@@ -228,6 +246,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Elevator Access'
                             labelName='Elevator Access'
+                            isChecked={property.amenities.includes('Elevator Access')}
                         />
                     </div>
                     <div>
@@ -236,6 +255,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Dishwasher'
                             labelName='Dishwasher'
+                            isChecked={property.amenities.includes('Dishwasher')}
                         />
                     </div>
                     <div>
@@ -244,6 +264,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Gym/Fitness Center'
                             labelName='Gym/Fitness Center'
+                            isChecked={property.amenities.includes('Gym/Fitness Center')}
                         />
                     </div>
                     <div>
@@ -252,6 +273,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Air Conditioning'
                             labelName='Air Conditioning'
+                            isChecked={property.amenities.includes('Air Conditioning')}
                         />
                     </div>
                     <div>
@@ -260,6 +282,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Balcony/Patio'
                             labelName='Balcony/Patio'
+                            isChecked={property.amenities.includes('Balcony/Patio')}
                         />
                     </div>
                     <div>
@@ -268,6 +291,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Smart TV'
                             labelName='Smart TV'
+                            isChecked={property.amenities.includes('Smart TV')}
                         />
                     </div>
                     <div>
@@ -276,6 +300,7 @@ const PropertyAddForm = () => {
                             name='amenities'
                             value='Coffee Maker'
                             labelName='Coffee Maker'
+                            isChecked={property.amenities.includes('Coffee Maker')}
                         />
                     </div>
                 </div>
@@ -294,6 +319,7 @@ const PropertyAddForm = () => {
                             type='number'
                             min={0}
                             id='weekly_rate'
+                            defaultValue={property.rates.weekly}
                             name='rates.weekly'
                             className='border rounded w-full py-2 px-3'
                         />
@@ -306,6 +332,7 @@ const PropertyAddForm = () => {
                             type='number'
                             min={0}
                             id='monthly_rate'
+                            defaultValue={property.rates.monthly}
                             name='rates.monthly'
                             className='border rounded w-full py-2 px-3'
                         />
@@ -318,6 +345,7 @@ const PropertyAddForm = () => {
                             type='number'
                             min={0}
                             id='nightly_rate'
+                            defaultValue={property.rates.nightly}
                             name='rates.nightly'
                             className='border rounded w-full py-2 px-3'
                         />
@@ -335,6 +363,7 @@ const PropertyAddForm = () => {
                 <input
                     type='text'
                     id='seller_name'
+                    defaultValue={property.seller_info.name}
                     name='seller_info.name'
                     className='border rounded w-full py-2 px-3'
                     placeholder='Name'
@@ -350,6 +379,7 @@ const PropertyAddForm = () => {
                 <input
                     type='email'
                     id='seller_email'
+                    defaultValue={property.seller_info.email}
                     name='seller_info.email'
                     className='border rounded w-full py-2 px-3'
                     placeholder='Email address'
@@ -366,47 +396,18 @@ const PropertyAddForm = () => {
                 <input
                     type='tel'
                     id='seller_phone'
+                    defaultValue={property.seller_info.phone}
                     name='seller_info.phone'
                     className='border rounded w-full py-2 px-3'
                     placeholder='Phone'
                 />
             </div>
 
-            <div className='mb-4'>
-                <label htmlFor='images' className='block text-gray-700 font-bold mb-2'>
-                    Images (Select up to 4 images) <span className="text-red-500">*</span>
-                </label>
-                <input
-                    type='file'
-                    id='images'
-                    name='images'
-                    className='border rounded w-full py-2 px-3'
-                    accept='image/*'
-                    multiple
-                    required
-                />
-            </div>
+
             <div>
                 <p className="font-bold text-red-500">Note:</p>
                 <p className="text-sm my-1 mb-4"><span className="text-red-500">*</span> Fields with asterik (*) are Compulsory</p>
-                <div className='mb-6'>
-                    <label className='block text-gray-700 font-bold mb-2'>Agreement</label>
-                    <div className='flex items-center'>
-                        <input
-                            type='checkbox'
-                            id='terms_conditions'
-                            name='agreement'
-                            className='mr-2'
-                            required
-                        />
-                        <label htmlFor='terms_conditions' className='text-gray-700'>
-                            I agree to the{' '}
-                            <a href='/terms' className='text-primary underline'>Terms and Conditions</a>{' '}
-                            and{' '}
-                            <a href='/privacy' className='text-primary underline'>Privacy Policy</a>.
-                        </label>
-                    </div>
-                </div>
+
             </div>
 
             <div>
@@ -415,11 +416,11 @@ const PropertyAddForm = () => {
                     type='submit'
                     disabled={isLoading}
                 >
-                    {isLoading ? <MiniSpinner loading={true} size={20} color="#ffffff" /> : "Add Property"}
+                    {isLoading ? <MiniSpinner loading={true} size={20} color="#ffffff" /> : "Update Property"}
                 </button>
             </div>
         </form>
-    );
-};
+    )
+}
 
-export default PropertyAddForm;
+export default PropertyEditForm

@@ -19,14 +19,14 @@ const PropertyCard = ({ property }) => {
         }
     }
     return (
-        <div className="rounded-lg shadow-md relative bg-primary-foreground border border-input flex flex-col justify-between">
+        <div className="rounded-lg shadow-md shadow-slate-300 relative bg-primary-foreground border border-input flex flex-col justify-between">
             <Image
                 src={`${property.images[0]}`}
                 alt="property image"
                 height={0}
                 width={0}
                 sizes='100vw'
-                className='w-full h-auto rounded-t-lg'
+                className='w-full h-full rounded-t-lg object-cover object-center'
             />
             <div className="p-4">
                 <div className="text-left md:text-center lg:text-left mb-6">

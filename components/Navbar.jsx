@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
@@ -17,6 +17,11 @@ const Navbar = () => {
     const pathname = usePathname();
     const googleProfileImage = session?.user?.image;
 
+    // Create a ref for the dropdown menu
+    const dropdownRef = useRef(null);
+    const mobileDropdownRef = useRef(null); // Mobile dropdown ref
+    const hamburgerRef = useRef(null);
+    const profilePicRef = useRef(null);
 
     useEffect(() => {
         const setAuthProvider = async () => {
@@ -28,6 +33,25 @@ const Navbar = () => {
         setAuthProvider();
     }, [])
 
+    // Collapse dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
+                profilePicRef.current && !profilePicRef.current.contains(event.target)) {
+                setIsProfileDropdownActive(false);
+            }
+            if (mobileDropdownRef.current && !mobileDropdownRef.current.contains(event.target) &&
+                hamburgerRef.current && !hamburgerRef.current.contains(event.target)) {
+                setIsMenuActive(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
     return (
         <nav className='topbar'>
@@ -35,6 +59,7 @@ const Navbar = () => {
                 {/* hamburger menu for mobile */}
                 <div className='lg:hidden flex justify-center items-center cursor-pointer'
                     onClick={() => setIsMenuActive(prev => !prev)}
+                    ref={hamburgerRef}
                 >
                     <Image
                         src={hamburger}
@@ -117,6 +142,7 @@ const Navbar = () => {
                                         aria-expanded="false"
                                         aria-haspopup="true"
                                         onClick={() => setIsProfileDropdownActive(prev => !prev)}
+                                        ref={profilePicRef}
                                     >
                                         <span className="absolute -inset-1.5"></span>
                                         <span className="sr-only">Open user menu</span>
@@ -139,6 +165,7 @@ const Navbar = () => {
                                 {isProfileDropdownActive && (
                                     <div
                                         id="user-menu"
+                                        ref={dropdownRef} // Attach ref here
                                         className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-input py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                         role="menu"
                                         aria-orientation="vertical"
@@ -191,7 +218,7 @@ const Navbar = () => {
             </div>
 
             {/*// ^--------------------MOBILE MENU--------------------------*/}
-            <div className={`lg:hidden absolute top-full left-0 right-0 bg-background transition-transform duration-150 ease-in-out ${isMenuActive ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`} id="mobile-menu">
+            <div className={`lg:hidden absolute top-full left-0 right-0 bg-background transition-transform duration-150 ease-in-out ${isMenuActive ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`} id="mobile-menu" ref={mobileDropdownRef}>
                 <div className="flex flex-col bg-white shadow-lg ">
                     <Link
                         href="/"

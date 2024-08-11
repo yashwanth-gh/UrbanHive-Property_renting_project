@@ -3,6 +3,8 @@ import '@/assets/styles/globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AuthProvider from '@/components/AuthProvider'
+import { Flip, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const metadata = {
     title: 'UrbanHive | Discover Your Hive, Where Dreams Thrive',
@@ -24,6 +26,11 @@ const MainLayout = ({ children }) => {
                     <Navbar />
                     <div>{children}</div>
                     <Footer />
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        theme="colored"
+                        transition={Flip} />
                 </body>
             </html>
         </AuthProvider>

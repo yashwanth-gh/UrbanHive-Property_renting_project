@@ -16,7 +16,7 @@ const PropertyPage = () => {
     const [loading, setLoading] = useState(true);
     const [property, setProperty] = useState(null);
     const { id } = useParams();
-    console.log(property)
+    // console.log(property)
 
     useEffect(() => {
         const fetchProperty = async () => {

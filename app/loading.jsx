@@ -4,7 +4,7 @@ import PuffLoader from "react-spinners/PuffLoader";
 
 const override = {
     display: "block",
-    margin: "140px auto",
+    margin: "150px auto 90vh",
 };
 
 const LoadingPage = ({ loading }) => {

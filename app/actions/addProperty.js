@@ -7,13 +7,15 @@ import { redirect } from "next/navigation";
 import cloudinary from "@/config/cloudinary";
 
 async function addProperty(formData) {
-  console.log(10);
   await DB_Connect();
-  console.log(12);
+
   const sessionUser = await getSessionUser();
 
   if (!sessionUser || !sessionUser?.userId) {
-    throw new Error("UserId is required");
+    return {
+      success: false,
+      message: "UserId is required",
+    };
   }
   const { userId } = sessionUser;
 
@@ -49,31 +51,30 @@ async function addProperty(formData) {
       email: formData.get("seller_info.email"),
       phone: formData.get("seller_info.phone"),
     },
-    amenities: amenities,
-    images: images,
     agreement: formData.has("agreement"),
   };
 
-  const imageUrls = [];
+  const imageUrls = await Promise.all(
+    images.map(async (imageFile) => {
+      try {
+        const imageBuffer = await imageFile.arrayBuffer();
+        const base64Image = Buffer.from(imageBuffer).toString("base64");
 
-  for (const imageFiles of images) {
-    const imageBuffer = await imageFiles.arrayBuffer();
-    const imageArray = Array.from(new Uint8Array(imageBuffer));
-    const imageData = Buffer.from(imageArray);
+        const result = await cloudinary.uploader.upload(
+          `data:image/png;base64,${base64Image}`,
+          { folder: "Urbanhive" }
+        );
 
-    //convert to base64
-    const base64Image = imageData.toString("base64");
-
-    //make request to cloudinary
-    const result = await cloudinary.uploader.upload(
-      `data:image/png;base64,${base64Image}`,
-      {
-        folder: "Urbanhive",
+        return result.secure_url;
+      } catch (uploadError) {
+        console.error("Image upload failed:", uploadError);
+        return {
+          success: false,
+          message: "Failed to upload one or more images.",
+        };
       }
-    );
-
-    imageUrls.push(result.secure_url);
-  }
+    })
+  );
 
   data.images = imageUrls;
   const newProperty = new Property(data);

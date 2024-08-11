@@ -1,10 +1,14 @@
 import React from 'react'
 
-const Checkbox = ({ id = '', name = '', value = '', labelName = 'label-name' }) => {
+const Checkbox = ({ id = '', name = '', value = '', labelName = 'label-name', isChecked = false }) => {
     return (
-        <div className="uv-checkbox-wrapper checkbox-wrapper">
+        <div className="uv-checkbox-wrapper checkbox-wrapper ">
             <input type="checkbox" id={id}
-                className="uv-checkbox mr-2" name={name} value={value} />
+                className="uv-checkbox mr-2"
+                name={name}
+                value={value}
+                defaultChecked={isChecked}
+            />
             <label htmlFor={id} className="uv-checkbox-label">
                 <div className="uv-checkbox-icon">
                     <svg viewBox="0 0 24 24" className="uv-checkmark">
@@ -12,7 +16,8 @@ const Checkbox = ({ id = '', name = '', value = '', labelName = 'label-name' }) 
                             fill="none"></path>
                     </svg>
                 </div>
-                &nbsp;&nbsp;{labelName}
+                <p className='self-center md:text-left text-sm'>{labelName}</p>
+
             </label>
         </div>
     )
