@@ -2,7 +2,7 @@
 import addProperty from "@/app/actions/addProperty";
 import Checkbox from "@/components/Checkbox";
 import { useState } from "react";
-import MiniSpinner from "@/components/miniSpinner";
+import MiniSpinner from "@/components/MiniSpinner";
 import { toast } from "react-toastify";
 
 
