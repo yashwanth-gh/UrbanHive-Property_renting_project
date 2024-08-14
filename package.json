@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@maptiler/sdk": "^2.2.2",
     "cloudinary": "^2.4.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
