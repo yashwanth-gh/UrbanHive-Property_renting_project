@@ -14,7 +14,7 @@ const PropertyMap = ({ property }) => {
     const [geocodeError, setGeocodeError] = useState(false);
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const zoom = 12;
+    const zoom = 15;
 
     maptilersdk.config.apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY || null;
 

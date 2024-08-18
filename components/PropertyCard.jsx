@@ -20,18 +20,26 @@ const PropertyCard = ({ property }) => {
     }
     return (
         <div className="rounded-lg shadow-md shadow-slate-300 relative bg-primary-foreground border border-input flex flex-col justify-between">
-            <Image
-                src={`${property.images[0]}`}
-                alt="property image"
-                height={0}
-                width={0}
-                sizes='100vw'
-                className='w-full h-full rounded-t-lg object-cover object-center'
-            />
+            <Link
+                href={`/properties/${property._id}`}
+                className='w-full h-full'>
+                <Image
+                    src={`${property.images[0]}`}
+                    alt="property image"
+                    height={0}
+                    width={0}
+                    sizes='100vw'
+                    className='w-full h-full rounded-t-lg object-cover object-center'
+                />
+            </Link>
             <div className="p-4">
                 <div className="text-left md:text-center lg:text-left mb-6">
                     <div className="text-border">{property.type}</div>
-                    <h3 className="text-xl lg:text-2xl font-bold">{property.name}</h3>
+                    <h3 className="text-xl lg:text-2xl font-bold w-fit">
+                        <Link href={`/properties/${property._id}`} className='w-fit'>
+                            {property.name}
+                        </Link>
+                    </h3>
                 </div>
                 <h3
                     className="absolute top-[10px] right-[10px] px-4 py-2 rounded-lg bg-primary-foreground text-primary font-bold text-right md:text-center lg:text-right"
