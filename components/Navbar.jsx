@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
-import { FaGoogle, FaRegBell, FaRegUser } from 'react-icons/fa';
+import { FaGoogle, FaRegEnvelope, FaRegUser } from 'react-icons/fa';
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 
@@ -128,8 +128,8 @@ const Navbar = () => {
                                     className='h-8 w-8 rounded-full'
                                     src={bell}
                                 /> */}
-                                    <FaRegBell className='h-8 w-8 text-foreground' />
-                                    <span className='absolute top-0 right-0 bg-red-500 rounded-full px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
+                                    <FaRegEnvelope className='h-8 w-8 text-foreground' />
+                                    <span className='absolute top-0 -right-1 bg-red-500 rounded-md px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
                                 </Link>
                             </div>
 

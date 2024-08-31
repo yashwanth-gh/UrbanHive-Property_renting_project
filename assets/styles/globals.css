@@ -127,7 +127,7 @@
 
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
     height: 3px;
     border-radius: 1px;
     background-color: white;
@@ -138,11 +138,11 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-gray-600 rounded-tl-full rounded-bl-full;
+    @apply bg-gray-500 rounded-full;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500 rounded-full;
+    @apply bg-gray-600 rounded-full;
   }
 
   .container {
