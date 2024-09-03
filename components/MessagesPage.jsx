@@ -7,6 +7,13 @@ const MessagesPage = ({ messages }) => {
     const [selectedMessageId, setSelectedMessageId] = useState(null);
 
     const selectedMessage = messages.find((message) => message._id === selectedMessageId);
+    if (messages.length === 0) return (
+        <div className='h-[80vh] w-full flex justify-center items-center'>
+            <p className='text-xl md:text-2xl text-gray-400 font-semibold'>
+                No messages to show
+            </p>
+        </div>
+    )
 
     return (
         <div className="flex h-screen container">

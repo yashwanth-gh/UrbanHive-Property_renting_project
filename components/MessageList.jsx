@@ -14,14 +14,14 @@ const MessageList = ({ messages, selectedMessageId, onSelectMessage }) => {
                 >
                     <div className="flex items-center space-x-3">
                         <Image
-                            src={message.sender.image || '/default-avatar.png'}
-                            alt={`${message.sender.username}'s profile picture`}
+                            src={message.sender?.image || '/default-avatar.png'}
+                            alt={`${message.sender?.username || "Deleted User"}'s profile picture`}
                             width={40}
                             height={40}
                             className="rounded-full"
                         />
                         <div className="flex-grow">
-                            <div className="font-bold">{message.sender.username}</div>
+                            <div className="font-bold">{message.sender?.username || "Deleted User"}</div>
                             <div className="text-xs text-gray-500">
                                 {format(new Date(message.createdAt), 'MMM dd, yyyy hh:mm a')}
                             </div>

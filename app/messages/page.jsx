@@ -4,7 +4,6 @@ import Message from '@/models/Message';
 import { convertToSerializableObjects } from '@/utils/convertToObjects';
 import { getSessionUser } from '@/utils/getSessionUser';
 
-
 const MessagesPageContainer = async () => {
     await DB_Connect();
 
@@ -25,8 +24,20 @@ const MessagesPageContainer = async () => {
 
     const messages = [...unreadMessages, ...readMessages].map((messageDoc) => {
         const message = convertToSerializableObjects(messageDoc);
-        message.sender = convertToSerializableObjects(messageDoc.sender);
-        message.property = convertToSerializableObjects(messageDoc.property);
+        // Check if the sender exists before converting
+        if (messageDoc.sender) {
+            message.sender = convertToSerializableObjects(messageDoc.sender);
+        } else {
+            message.sender = null; // or any default/fallback value you prefer
+        }
+
+        // Check if the property exists before converting
+        if (messageDoc.property) {
+            message.property = convertToSerializableObjects(messageDoc.property);
+        } else {
+            message.property = null; // or any default/fallback value you prefer
+        }
+
         return message;
     });
 
