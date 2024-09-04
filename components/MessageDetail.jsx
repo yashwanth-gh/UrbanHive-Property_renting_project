@@ -6,11 +6,13 @@ import markMessageAsRead from "@/app/actions/markMessageAsRead";
 import deleteMessage from "@/app/actions/deleteMessage"; // Import deleteMessage action
 import { toast } from "react-toastify";
 import MiniSpinner from "@/components/MiniSpinner"; // Assuming you have a MiniSpinner component
+import { useUnreadMessageContext } from "@/context/unreadMessageContext";
 
 const MessageDetail = ({ message, onBack }) => {
     const [isRead, setIsRead] = useState(message?.read);
     const [isDeleting, setIsDeleting] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const { setUnreadMessages } = useUnreadMessageContext();
 
     useEffect(() => {
         setIsRead(message?.read);
@@ -19,6 +21,7 @@ const MessageDetail = ({ message, onBack }) => {
     const handleReadClick = async () => {
         const read = await markMessageAsRead(message?._id);
         setIsRead(read.read);
+        setUnreadMessages((prev) => read.read ? prev - 1 : prev + 1);
         toast.success(read.message);
     };
 
@@ -34,6 +37,7 @@ const MessageDetail = ({ message, onBack }) => {
         setShowModal(false);
 
         if (result.success) {
+            setUnreadMessages((prev) => message?.read ? prev : prev - 1);
             toast.success(result.message);
             // Optionally, navigate away or refresh the page
         } else {

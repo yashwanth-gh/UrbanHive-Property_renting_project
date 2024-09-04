@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { FaGoogle, FaRegEnvelope, FaRegUser } from 'react-icons/fa';
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
+import UnreadMsgCount from '@/components/UnreadMsgCount'
 
 const Navbar = () => {
     const { data: session } = useSession()
@@ -129,7 +130,7 @@ const Navbar = () => {
                                     src={bell}
                                 /> */}
                                     <FaRegEnvelope className='h-8 w-8 text-foreground' />
-                                    <span className='absolute top-0 -right-1 bg-red-500 rounded-md px-1.5 -my-2 -mx-1 text-primary-foreground'>2</span>
+                                    <UnreadMsgCount />
                                 </Link>
                             </div>
 
