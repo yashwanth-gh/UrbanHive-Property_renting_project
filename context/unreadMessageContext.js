@@ -10,7 +10,7 @@ const unreadMessageContext = createContext();
 
 //create provider
 export const UnreadMessageProvider = ({ children }) => {
-  const [unreadMessages, setUnreadMessages] = useState(1);
+  const [unreadMessages, setUnreadMessages] = useState(0);
 
   const { data: session } = useSession();
 

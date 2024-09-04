@@ -1,13 +1,15 @@
 "use client"
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaBuilding, FaRegBuilding } from 'react-icons/fa'
+import Typed from 'typed.js';
 
 const PropertySearchForm = () => {
     const [location, setLocation] = useState('');
     const [propertyType, setPropertyType] = useState('All');
     const router = useRouter();
     const pathname = usePathname()
+    const heroTitleRef = useRef(null);
 
 
     const handelSubmit = (e) => {
@@ -20,10 +22,27 @@ const PropertySearchForm = () => {
         }
     }
 
+
+    useEffect(() => {
+        const typed = new Typed(heroTitleRef.current, {
+            strings: ["Apartment..", "House..", "Condo..", "Studio..", "Cottage..", "Room..", "Hive ;)"],
+            startDelay: 200,
+            typeSpeed: 200,
+            backSpeed: 200,
+            backDelay: 200,
+            loop: true,
+        });
+
+        // Destropying
+        return () => {
+            typed.destroy();
+        };
+    }, []);
+
     return (
         <div className='mt-3 md:mt-8 lg:mt-10 mx-auto max-w-4xl w-full'>
             <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} w-fit bg-green-900 bg-opacity-10 backdrop-blur-md rounded-t-2xl px-4 py-3`}>
-                <p className='montserrat-semibold'> Let's find your <span className='text-primary'>HIVE :)</span></p>
+                <p className='montserrat-semibold'> Search your potential <span className='text-primary font-bold ' ref={heroTitleRef}></span></p>
             </div>
             <form
                 className=" flex flex-col md:flex-row items-center  py-6 px-6 bg-green-900 bg-opacity-10 backdrop-blur-md rounded-2xl"

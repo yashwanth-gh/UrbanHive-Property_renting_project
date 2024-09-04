@@ -24,13 +24,33 @@ const Navbar = () => {
     const hamburgerRef = useRef(null);
     const profilePicRef = useRef(null);
 
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 600) {
+            // User is scrolling down and past a certain point (100px), hide navbar
+            setShowNavbar(false);
+        } else {
+            // User is scrolling up or hasn't scrolled far down, show navbar
+            setShowNavbar(true);
+        }
+        setLastScrollY(currentScrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
+
     useEffect(() => {
         const setAuthProvider = async () => {
             const res = await getProviders();
             setProviders(res);
         }
-
-
         setAuthProvider();
     }, [])
 
@@ -55,7 +75,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className='topbar'>
+        <nav className={`topbar navbar ${showNavbar ? 'visible' : 'hidden'}`}>
             <div className='flex justify-start gap-6 lg:w-auto '>
                 {/* hamburger menu for mobile */}
                 <div className='lg:hidden flex justify-center items-center cursor-pointer'
