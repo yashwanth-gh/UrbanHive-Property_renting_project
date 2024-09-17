@@ -150,7 +150,7 @@
   }
 
   .topbar {
-    @apply container flex justify-between items-center bg-background py-3 z-10 md:px-10 lg:px-20 sticky top-0;
+    @apply container flex justify-between items-center py-3 z-10 md:px-10 lg:px-20 sticky top-0;
   }
 
   .navbar {
@@ -166,7 +166,7 @@
   }
 
   .hero {
-    @apply container relative -mt-20 h-screen flex flex-col justify-center items-center;
+    @apply container relative -mt-16 h-screen flex flex-col justify-center items-center bg-sky-300;
   }
 
   .hero-content {

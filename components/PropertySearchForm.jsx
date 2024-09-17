@@ -41,11 +41,11 @@ const PropertySearchForm = () => {
 
     return (
         <div className='mt-3 md:mt-8 lg:mt-10 mx-auto max-w-4xl w-full'>
-            <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} w-fit bg-green-900 bg-opacity-10 backdrop-blur-md rounded-t-2xl px-4 py-3`}>
-                <p className='montserrat-semibold'> Search your potential <span className='text-primary font-bold ' ref={heroTitleRef}></span></p>
+            <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} w-fit bg-sky-100 bg-opacity-20 backdrop-blur-lg rounded-t-2xl px-4 py-3`}>
+                <p className='montserrat-semibold text-primary-foreground'> Search your potential <span className='text-primary-foreground font-bold ' ref={heroTitleRef}></span></p>
             </div>
             <form
-                className=" flex flex-col md:flex-row items-center  py-6 px-6 bg-green-900 bg-opacity-10 backdrop-blur-md rounded-2xl"
+                className=" flex flex-col md:flex-row items-center  py-6 px-6 bg-sky-100 bg-opacity-20 backdrop-blur-lg rounded-2xl"
                 onSubmit={handelSubmit}
             >
                 <div className="w-full md:w-3/5 md:pr-2 mb-4 md:mb-0">
@@ -54,20 +54,20 @@ const PropertySearchForm = () => {
                         type="text"
                         id="location"
                         placeholder="Enter Location (City, State, Zip, etc"
-                        className="w-full px-4 py-3 rounded-full bg-primary-foreground text-foreground focus:outline-none focus:ring focus:ring-primary"
+                        className="w-full px-4 py-3 rounded-lg bg-primary-foreground text-foreground focus:outline-none focus:ring focus:ring-primary"
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                     />
                 </div>
                 <div className="w-full md:w-2/5 md:pl-2 flex">
                     <label htmlFor="property-type" className="sr-only">Property Type</label>
-                    <div className='bg-primary-foreground text-sm text-border flex justify-normal items-center pl-4 pr-2 rounded-l-full border-r-2'>
+                    <div className='bg-primary-foreground text-sm text-border flex justify-normal items-center pl-4 pr-2 rounded-l-lg border-r-2'>
                         <FaRegBuilding />
                         <p className='text-nowrap'>&nbsp;Type</p>
                     </div>
                     <select
                         id="property-type"
-                        className="w-full px-4 py-3 rounded-r-full bg-primary-foreground text-foreground focus:outline-none"
+                        className="w-full px-4 py-3 rounded-r-lg bg-primary-foreground text-foreground focus:outline-none"
                         value={propertyType}
                         onChange={(e) => setPropertyType(e.target.value)}
 
@@ -85,7 +85,7 @@ const PropertySearchForm = () => {
                 </div>
                 <button
                     type="submit "
-                    className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-full text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary hover:opacity-85"
+                    className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-lg text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary hover:opacity-85"
                 >
                     Search
                 </button>

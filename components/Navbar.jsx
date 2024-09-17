@@ -29,7 +29,7 @@ const Navbar = () => {
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY && currentScrollY > 600) {
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
             // User is scrolling down and past a certain point (100px), hide navbar
             setShowNavbar(false);
         } else {
@@ -75,7 +75,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`topbar navbar ${showNavbar ? 'visible' : 'hidden'}`}>
+        <nav className={`topbar ${pathname === "/" ? 'bg-sky-300' : 'bg-background'} bg-opacity-30 backdrop-blur-xl navbar ${showNavbar ? 'visible' : 'hidden'}`}>
             <div className='flex justify-start gap-6 lg:w-auto '>
                 {/* hamburger menu for mobile */}
                 <div className='lg:hidden flex justify-center items-center cursor-pointer'
