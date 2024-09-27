@@ -1,4 +1,124 @@
 "use client";
+import PropertyCard from "@/components/PropertyCard";
+import Link from "next/link";
+import { getProperties } from "@/utils/requests";
+import React, { useState, useEffect, useRef } from "react";
+import BlazeSlider from "blaze-slider";
+import "blaze-slider/dist/blaze.css"; // Import BlazeSlider CSS
+import MiniSpinner from "./MiniSpinner";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaArrowLeft, FaArrowRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
+
+const FeaturedProperties = () => {
+    const [properties, setProperties] = useState([]);
+    const [loading, setLoading] = useState(true); // State to track loading
+    const sliderRef = useRef();
+    const elRef = useRef();
+
+    // Fetch properties asynchronously inside useEffect
+    useEffect(() => {
+        const fetchProperties = async () => {
+            const properties = await getProperties();
+            // Randomly select 4 properties to feature
+            const featuredProperties = properties
+                .sort(() => Math.random() - Math.random())
+                .slice(0, 6);
+            setProperties(featuredProperties);
+            setLoading(false); // Stop loading when properties are fetched
+        };
+
+        fetchProperties();
+    }, []);
+
+    // Initialize BlazeSlider after DOM updates
+    useEffect(() => {
+        if (!sliderRef.current && properties.length > 0) {
+            // Mobile-first approach: Start from mobile, and then define larger screen configurations
+            sliderRef.current = new BlazeSlider(elRef.current, {
+                all: {
+                    draggable: true,
+                    enablePagination: false,
+                    loop: true,
+                    enableAutoplay: true,
+                    stopAutoplayOnInteraction: true,
+                    slidesToShow: 4, // Default for desktop
+                    slidesToScroll: 1,
+                    autoplayInterval: 3000, // Autoplay interval in milliseconds
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3, // Tablet configuration
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 1, // Mobile configuration
+                },
+            });
+
+        }
+    }, [properties]);
+
+    return (
+        <section className="py-10 px-4 bg-secondary my-8">
+            <div>
+                <h2 className="text-2xl font-semibold text-center">Featured Properties</h2>
+                <div className="container-xl lg:container m-auto px-4 py-6">
+                    {loading ? ( // Show loading message until data is fetched and slider is initialized
+                        <div className="text-center text-gray-500"><MiniSpinner /></div>
+                    ) : properties.length === 0 ? (
+                        <div className="text-center text-gray-500">No properties available</div>
+                    ) : (
+                        <div className="blaze-slider" ref={elRef}>
+                            <div className="blaze-container">
+                                <div className="blaze-controls flex justify-between">
+                                    <button
+                                        className="blaze-prev"
+                                        aria-label="Go to previous slide"
+                                    ><FaArrowLeft className="text-xl" /></button>
+                                    <button
+                                        className="blaze-next"
+                                        aria-label="Go to next slide"
+                                    ><FaArrowRight className="text-xl" /></button>
+                                </div>
+                                <div className="blaze-track-container">
+                                    <div className="blaze-track">
+                                        {properties.map((property) => (
+                                            <div className="blaze-slide" key={property?._id}>
+                                                <PropertyCard property={property} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className="container text-center mb-10">
+                <Link
+                    href={"/properties"}
+                    className="bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md"
+                >
+                    View All Properties
+                </Link>
+            </div>
+        </section>
+    );
+};
+
+export default FeaturedProperties;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import PropertyCard from '@/components/PropertyCard';
 import Link from 'next/link';
 import { getProperties } from '@/utils/requests';
@@ -38,77 +158,4 @@ const FeaturedProperties = async () => {
 };
 
 export default FeaturedProperties;
-
-
-
-//~ This is the code which takes lot of time to render
-
-// "use client"
-// import PropertyCard from '@/components/PropertyCard';
-// import Link from 'next/link';
-// import { Splide, SplideSlide } from '@splidejs/react-splide';
-// import { getProperties } from '@/utils/requests';
-// import '@splidejs/react-splide/css';
-
-// const FeaturedProperties = async () => {
-//     const properties = await getProperties();
-
-//     const recentProperties = properties.sort(() => Math.random() - Math.random()).slice(0, 5);
-
-//     return (
-//         <section className='py-10 px-4 bg-secondary my-8'>
-//             <div className="">
-//                 <h2 className='text-2xl font-semibold text-center'>Featured Properties</h2>
-//                 <div className="container-xl lg:container m-auto px-4 py-6 ">
-//                     {(recentProperties.length === 0) ? (
-//                         <div className="text-center text-gray-500">No properties available</div>
-//                     ) : (
-
-//                         <Splide
-//                             options={{
-//                                 perPage: 4,
-//                                 perMove: 3,
-//                                 arrows: true,
-//                                 pagination: true,
-//                                 drag: 'free',
-//                                 gap: '1rem',
-//                                 type: 'loop',
-//                                 focus: 'center',
-//                                 autoplay: true,
-//                                 interval: 3000,
-//                                 padding: { top: '1rem', bottom: '1rem' },
-//                                 preloadPages: 1,
-//                                 breakpoints: {
-//                                     768: {
-//                                         perPage: 1, // On smaller screens show 1 slide at a time
-//                                     },
-//                                     1024: {
-//                                         perPage: 2, // On medium screens show 2 slides at a time
-//                                     },
-//                                 },
-//                             }}
-//                         >
-//                             {recentProperties.map((property) => (
-//                                 <SplideSlide key={property?._id}>
-//                                     <PropertyCard property={property} />
-//                                 </SplideSlide>
-//                             ))}
-//                         </Splide>
-
-//                     )}
-
-//                 </div>
-//             </div>
-//             <div className='container text-center mb-10'>
-//                 <Link
-//                     href={"/properties"}
-//                     className='bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md'
-//                 >
-//                     View All Properties
-//                 </Link>
-//             </div>
-//         </section>
-//     )
-// }
-
-// export default FeaturedProperties
+ */

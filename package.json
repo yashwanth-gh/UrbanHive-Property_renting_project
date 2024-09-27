@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@maptiler/sdk": "^2.2.2",
-    "@splidejs/react-splide": "^0.7.12",
+    "blaze-slider": "^1.9.3",
     "cloudinary": "^2.4.0",
     "date-fns": "^3.6.0",
     "mongodb": "^6.8.0",

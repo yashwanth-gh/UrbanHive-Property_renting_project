@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagramSquare, FaTwitterSquare } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaInstagramSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa';
 import logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,14 +18,14 @@ const Footer = () => {
                 </div>
                 <div className="mb-6 md:mb-2">
                     <div className="flex justify-center gap-6 md:gap-10">
-                        <Link href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                            <FaFacebook className='text-2xl' />
+                        <Link href="https://www.linkedin.com/in/yashwanth-b-m-4a4a09227/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <FaLinkedin className='text-2xl' />
                         </Link>
-                        <Link href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                        <Link href="https://x.com/yashwanthbm36" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                             <FaTwitterSquare className='text-2xl' />
                         </Link>
-                        <Link href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <FaInstagramSquare className='text-2xl' />
+                        <Link href="https://github.com/yashwanth-gh" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <FaGithub className='text-2xl' />
                         </Link>
                     </div>
                 </div>

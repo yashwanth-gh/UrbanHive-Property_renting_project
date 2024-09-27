@@ -280,4 +280,20 @@
     height: 100%;
   }
   /*^ -----------------checkbox style END------------------  */
+
+  /*^ -----------------Blazer slider START------------------  */
+  .blaze-prev,
+  .blaze-next {
+    background-color: hsl(var(--primary-foreground));
+    border: none;
+    border-radius: 100%;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .blaze-slider .blaze-slide {
+    padding: 10px;
+  }
+
+  /*^ -----------------Blazer slider END------------------  */
 }
