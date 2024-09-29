@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBed, FaCheckCircle, FaCheckSquare, FaMapPin, FaRegBuilding, FaRulerCombined, FaShower } from 'react-icons/fa'
+import { FaBed, FaCheckCircle, FaMapPin, FaRegBuilding, FaRulerCombined, FaShower } from 'react-icons/fa'
 import PropertyMap from './PropertyMap';
 
 const formatNumberToIndian = (number) => {
@@ -30,7 +30,7 @@ const PropertyPageDetails = ({ property }) => {
                 <h3 className="text-lg font-bold my-6 bg-primary text-white p-2">
                     Rates & Options
                 </h3>
-                <div className="flex flex-col md:flex-row justify-around">
+                <div className="flex flex-col lg:flex-row justify-around">
                     {property.rates.nightly && <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
                         <div className="text-3xl font-bold text-foreground">₹{formatNumberToIndian(property.rates.nightly)}</div>
                         <div className="text-foreground mr-2 font-medium self-end">&nbsp;/nightly</div>

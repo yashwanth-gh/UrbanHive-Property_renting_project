@@ -6,6 +6,7 @@ import AuthProvider from '@/components/AuthProvider'
 import { Flip, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { UnreadMessageProvider } from '@/context/unreadMessageContext'
+import 'photoswipe/dist/photoswipe.css'
 
 export const metadata = {
     title: 'UrbanHive | Discover Your Hive, Where Dreams Thrive',
