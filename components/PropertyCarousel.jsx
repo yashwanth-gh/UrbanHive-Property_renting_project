@@ -14,7 +14,7 @@ const PropertyCarousel = ({ images, property }) => {
                     <Link
                         href={`/properties/${property._id}/images`}>
                         <Image
-                            src={images[0]}
+                            src={images[0]?.url}
                             alt="Property 1"
                             width={0}
                             height={0}
@@ -28,7 +28,7 @@ const PropertyCarousel = ({ images, property }) => {
                     <Link
                         href={`/properties/${property._id}/images`}>
                         <Image
-                            src={images[1]}
+                            src={images[1]?.url}
                             alt="Property 2"
                             width={0}
                             height={0}
@@ -42,7 +42,7 @@ const PropertyCarousel = ({ images, property }) => {
                     <Link
                         href={`/properties/${property._id}/images`}>
                         <Image
-                            src={images[2]}
+                            src={images[2]?.url}
                             alt="Property 3"
                             width={0}
                             height={0}

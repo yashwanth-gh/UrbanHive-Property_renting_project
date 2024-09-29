@@ -20,7 +20,9 @@ const ProfilePage = async () => {
     }
     const { userId } = sessionUser;
     const userDetails = await User.findById(userId);
-    const userPropertiesDocs = await Property.find({ owner: userId }).lean();
+    const userPropertiesDocs = await Property.find({ owner: userId })
+        .sort({ createdAt: -1 })
+        .lean();
     const userProperties = userPropertiesDocs.map(convertToSerializableObjects);
     const { createdAt } = userDetails;
     const { days, months, years } = getUserDuration(createdAt);

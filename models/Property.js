@@ -1,5 +1,16 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
+const ImageSchema = new Schema({
+  url: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+});
+
 const PropertySchema = new Schema(
   {
     owner: {
@@ -71,11 +82,7 @@ const PropertySchema = new Schema(
         type: String,
       },
     },
-    images: [
-      {
-        type: String,
-      },
-    ],
+    images: [ImageSchema], // Updated to use ImageSchema
     is_featured: {
       type: Boolean,
       default: false,

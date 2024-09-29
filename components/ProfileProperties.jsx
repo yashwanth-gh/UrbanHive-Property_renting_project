@@ -67,7 +67,7 @@ const ProfileProperties = ({ userProperties: initialProperties }) => {
                     <Link href={`/properties/${property._id}`}>
                         <Image
                             className="h-40 w-full rounded-md object-cover object-center"
-                            src={`${property.images[0]}` || "/images/properties/a1.jpg"}
+                            src={`${property.images[0]?.url}` || "/images/properties/a1.jpg"}
                             alt="Property 1"
                             width={0}
                             height={0}

@@ -5,7 +5,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
-import { FaGoogle, FaRegEnvelope, FaRegUser } from 'react-icons/fa';
+import { FaGoogle, FaRegUser } from 'react-icons/fa';
+import { TbMessage2Question } from "react-icons/tb";
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 import UnreadMsgCount from '@/components/UnreadMsgCount'
@@ -150,7 +151,7 @@ const Navbar = () => {
                                     className='h-8 w-8 rounded-full'
                                     src={bell}
                                 /> */}
-                                    <FaRegEnvelope className='h-8 w-8 text-foreground' />
+                                    <TbMessage2Question className='h-8 w-8 text-foreground' />
                                     <UnreadMsgCount />
                                 </Link>
                             </div>

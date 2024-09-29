@@ -65,7 +65,7 @@ async function addProperty(formData) {
           { folder: "Urbanhive" }
         );
 
-        return result.secure_url;
+        return { url: result.secure_url, title: "Image Title" };
       } catch (uploadError) {
         console.error("Image upload failed:", uploadError);
         return {
