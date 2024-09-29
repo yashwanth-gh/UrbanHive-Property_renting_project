@@ -17,11 +17,11 @@ const FeaturedProperties = () => {
     // Fetch properties asynchronously inside useEffect
     useEffect(() => {
         const fetchProperties = async () => {
-            const properties = await getProperties();
+            const { properties } = await getProperties();
             // Randomly select 4 properties to feature
             const featuredProperties = properties
-                .sort(() => Math.random() - Math.random())
-                .slice(0, 6);
+                ?.sort(() => Math.random() - Math.random())
+                ?.slice(0, 6);
             setProperties(featuredProperties);
             setLoading(false); // Stop loading when properties are fetched
         };
@@ -31,7 +31,7 @@ const FeaturedProperties = () => {
 
     // Initialize BlazeSlider after DOM updates
     useEffect(() => {
-        if (!sliderRef.current && properties.length > 0) {
+        if (!sliderRef.current && properties?.length > 0) {
             // Mobile-first approach: Start from mobile, and then define larger screen configurations
             sliderRef.current = new BlazeSlider(elRef.current, {
                 all: {
@@ -39,10 +39,13 @@ const FeaturedProperties = () => {
                     enablePagination: false,
                     loop: true,
                     enableAutoplay: true,
+                    slideGap: '3px', // Set width between the slides to 10px
                     stopAutoplayOnInteraction: true,
                     slidesToShow: 4, // Default for desktop
                     slidesToScroll: 1,
                     autoplayInterval: 3000, // Autoplay interval in milliseconds
+                    transitionDuration: 1000,
+                    transitionTimingFunction: 'cubic-bezier(0.5, 0, 0.5, 1)',
                 },
                 '(max-width: 900px)': {
                     slidesToShow: 3, // Tablet configuration
@@ -62,31 +65,31 @@ const FeaturedProperties = () => {
                 <div className="container-xl lg:container m-auto px-4 py-6">
                     {loading ? ( // Show loading message until data is fetched and slider is initialized
                         <div className="text-center text-gray-500"><MiniSpinner /></div>
-                    ) : properties.length === 0 ? (
+                    ) : properties?.length === 0 ? (
                         <div className="text-center text-gray-500">No properties available</div>
                     ) : (
                         <div className="blaze-slider" ref={elRef}>
                             <div className="blaze-container">
-                                <div className="blaze-controls flex justify-between">
-                                    <button
-                                        className="blaze-prev"
-                                        aria-label="Go to previous slide"
-                                    ><FaArrowLeft className="text-xl" /></button>
-                                    <button
-                                        className="blaze-next"
-                                        aria-label="Go to next slide"
-                                    ><FaArrowRight className="text-xl" /></button>
-                                </div>
+
                                 <div className="blaze-track-container">
                                     <div className="blaze-track">
-                                        {properties.map((property) => (
+                                        {properties?.map((property) => (
                                             <div className="blaze-slide" key={property?._id}>
                                                 <PropertyCard property={property} />
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-
+                                <div className="blaze-controls flex justify-between mt-3 px-8">
+                                    <button
+                                        className="blaze-prev"
+                                        aria-label="Go to previous slide"
+                                    ><FaArrowLeft className="text-xl text-primary-foreground" /></button>
+                                    <button
+                                        className="blaze-next"
+                                        aria-label="Go to next slide"
+                                    ><FaArrowRight className="text-xl text-primary-foreground" /></button>
+                                </div>
                             </div>
                         </div>
                     )}

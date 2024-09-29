@@ -284,9 +284,9 @@
   /*^ -----------------Blazer slider START------------------  */
   .blaze-prev,
   .blaze-next {
-    background-color: hsl(var(--primary-foreground));
+    background-color: hsl(var(--primary));
     border: none;
-    border-radius: 100%;
+    border-radius: 16%;
     padding: 10px;
     cursor: pointer;
   }

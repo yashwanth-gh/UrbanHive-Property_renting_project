@@ -1,7 +1,7 @@
 import DB_Connect from "@/config/DB_Connect";
 import User from "@/models/User";
-import { Db } from "mongodb";
 import GoogleProvider from "next-auth/providers/google";
+
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [
@@ -11,7 +11,7 @@ export const authOptions = {
       authorization: {
         params: {
           prompt: "consent",
-          access_type: "offline",
+          access_type: "offline", // Keeps the refresh token
           response_type: "code",
         },
       },
@@ -19,10 +19,10 @@ export const authOptions = {
     // ...add more providers here
   ],
   session: {
-    // Set the session duration in seconds (e.g., 30 days)
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    // Set the session duration from the environment variable or default to 30 days
+    maxAge: Number(process.env.SESSION_MAX_AGE) || 30 * 24 * 60 * 60,
     // Extend the session duration when the user interacts with the site
-    updateAge: 24 * 60 * 60, // 1 day
+    updateAge: Number(process.env.SESSION_UPDATE_AGE) || 10 * 60, // 10 minutes by defau
   },
   callbacks: {
     //Invoked on successful signin

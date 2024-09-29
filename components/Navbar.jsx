@@ -9,6 +9,7 @@ import { FaGoogle, FaRegEnvelope, FaRegUser } from 'react-icons/fa';
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 import UnreadMsgCount from '@/components/UnreadMsgCount'
+import MiniSpinner from './MiniSpinner'
 
 const Navbar = () => {
     const { data: session } = useSession()
@@ -127,15 +128,15 @@ const Navbar = () => {
                 <div className='flex justify-center items-center text-sm font-semibold'>
                     {(!session) ? (
                         //^ login/signup if user is NOT logged in
-                        <div className='rounded-full px-2.5 py-1.5 hover:shadow-lg text-primary-foreground bg-primary'>
+                        <div className='rounded-full hover:shadow-lg text-primary-foreground bg-primary '>
                             {providers ? (Object.values(providers).map((provider, index) => (
-                                <button className='flex justify-center items-center' key={index}
+                                <button className='flex justify-center items-center px-2.5 py-1.5' key={index}
                                     onClick={() => signIn(provider.id)}>
                                     <FaGoogle />
                                     <span className='lg:px-1 lg:pl-2 pl-1.5'>Login / Signup</span>
                                 </button>
                             ))) : (
-                                <span className='animate-pulse'>Loading...</span>
+                                <div className='flex justify-center items-center px-3 py-1.5'> <MiniSpinner size={20} color='#fff' /><span className='ml-2 font-normal'>Loading</span></div>
                             )
                             }
                         </div>
