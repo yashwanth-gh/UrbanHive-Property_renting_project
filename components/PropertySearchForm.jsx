@@ -42,8 +42,8 @@ const PropertySearchForm = () => {
 
     return (
         <div className='mt-3 md:mt-8 lg:mt-10 mx-auto max-w-4xl w-full'>
-            <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} w-fit bg-sky-100 bg-opacity-20 backdrop-blur-lg rounded-t-2xl px-4 py-3`}>
-                <p className='montserrat-semibold text-primary-foreground'> Search your potential <span className='text-primary-foreground font-bold ' ref={heroTitleRef}></span></p>
+            <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} hidden md:inline-block w-fit bg-sky-300 bg-opacity-20 backdrop-blur-lg rounded-t-2xl px-4 py-3`}>
+                <p className='montserrat-semibold text-primary-foreground'> Search your potential <span className='text-primary font-bold ' ref={heroTitleRef}></span></p>
             </div>
             <form
                 className=" flex flex-col md:flex-row items-center  py-6 px-6 bg-sky-100 bg-opacity-20 backdrop-blur-lg rounded-2xl"

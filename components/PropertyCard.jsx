@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { memo, useMemo } from 'react';
 import { FaBed, FaMapMarkerAlt, FaMoneyCheck, FaRulerCombined, FaShower } from 'react-icons/fa';
+import PropertyRating from './PropertyRating';
 
 const PropertyCard = ({ property }) => {
 
@@ -29,7 +30,11 @@ const PropertyCard = ({ property }) => {
       </Link>
       <div className="p-4 h-auto">
         <div className="text-left mb-2">
-          <div className="text-border text-sm">{property.type}</div>
+          <div className="text-border text-sm flex justify-between items-center">
+            {property.type}
+            <PropertyRating />
+          </div>
+
           <h3 className="text-xl font-bold w-fit">
             <Link href={`/properties/${property._id}`} className='w-fit'>
               {property.name}
@@ -78,9 +83,12 @@ const PropertyCard = ({ property }) => {
         <div className="border border-primary mb-3"></div>
 
         <div className="flex flex-col lg:flex-row justify-between mb-1">
-          <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <FaMapMarkerAlt className='inline text-destructive mt-1' />
-            <span className='text-destructive'>{property.location.city}</span>
+          <div className="flex flex-col align-middle gap-2 mb-4 lg:mb-0">
+            <div className='flex align-middle gap-2 mb-4 lg:mb-0'>
+              <FaMapMarkerAlt className='inline text-destructive mt-1' />
+              <span className='text-destructive'>{property.location.city}</span>
+            </div>
+
           </div>
           <Link
             href={`/properties/${property._id}`}
@@ -96,95 +104,3 @@ const PropertyCard = ({ property }) => {
 };
 
 export default memo(PropertyCard);
-
-
-
-
-/* 
-{
-  "_id": {
-    "$oid": "66b72c46e100750960b9dffa"
-  },
-  "owner": {
-    "$oid": "66b31ec0d85b681bf495b40d"
-  },
-  "name": "Embassy Grand View",
-  "type": "Apartment",
-  "description": "A cozy downtown loft with great city views.",
-  "location": {
-    "street": "Bellary Rd, Hebbal",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "zipcode": "560024"
-  },
-  "beds": 2,
-  "baths": 2,
-  "square_feet": 1800,
-  "amenities": [
-    "Wifi",
-    "Full kitchen",
-    "Washer & Dryer",
-    "Free Parking",
-    "Swimming Pool",
-    "Hot Tub",
-    "24/7 Security",
-    "Wheelchair Accessible",
-    "Elevator Access",
-    "Dishwasher",
-    "Gym/Fitness Center",
-    "Air Conditioning",
-    "Balcony/Patio",
-    "Smart TV",
-    "Coffee Maker"
-  ],
-  "rates": {
-    "nightly": null,
-    "weekly": 45000,
-    "monthly": 175000
-  },
-  "seller_info": {
-    "name": "Priya Sharma",
-    "email": "priya@gmail.com",
-    "phone": "8764235257"
-  },
-  "images": [
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280457/Urbanhive/bhdaxbatohtaaa050cfy.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280456/Urbanhive/lb1mzisnlcdflbawr1nt.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280454/Urbanhive/rmqgasfuybfabvhz5p4j.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280455/Urbanhive/kkxirkey6ilcv4kmuqcl.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280455/Urbanhive/j00bzjrypvj3oujf0chu.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280453/Urbanhive/skhkxdewbqswo33impsu.webp",
-      "title": "Image title"
-    },
-    {
-      "url": "https://res.cloudinary.com/dfaf6neg8/image/upload/v1723280452/Urbanhive/eiydzifyq8qfyzixpyjt.webp",
-      "title": "Image title"
-    }
-  ],
-  "is_featured": false,
-  "agreement": true,
-  "createdAt": {
-    "$date": "2024-08-10T09:00:54.505Z"
-  },
-  "updatedAt": {
-    "$date": "2024-08-17T07:52:45.487Z"
-  },
-  "__v": 0
-}
-*/
