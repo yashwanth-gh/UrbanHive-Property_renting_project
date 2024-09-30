@@ -129,7 +129,7 @@ const Navbar = () => {
                 <div className='flex justify-center items-center text-sm font-semibold'>
                     {(!session) ? (
                         //^ login/signup if user is NOT logged in
-                        <div className='rounded-full hover:shadow-lg text-primary-foreground bg-primary '>
+                        <div className='rounded-full hover:bg-foreground duration-200 text-primary-foreground bg-primary '>
                             {providers ? (Object.values(providers).map((provider, index) => (
                                 <button className='flex justify-center items-center px-2.5 py-1.5' key={index}
                                     onClick={() => signIn(provider.id)}>

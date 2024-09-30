@@ -2,6 +2,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { FaBuilding, FaRegBuilding } from 'react-icons/fa'
+import { TbHomeSearch } from 'react-icons/tb';
 import Typed from 'typed.js';
 
 const PropertySearchForm = () => {
@@ -85,9 +86,10 @@ const PropertySearchForm = () => {
                 </div>
                 <button
                     type="submit "
-                    className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-lg text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary hover:opacity-85"
+                    className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 montserrat-semibold rounded-lg text-primary-foreground bg-primary focus:outline-none focus:ring focus:ring-primary hover:bg-foreground duration-200 flex items-center justify-center"
                 >
-                    Search
+                    <TbHomeSearch className='inline mr-2' />
+                    <span>Search</span>
                 </button>
             </form>
         </div>

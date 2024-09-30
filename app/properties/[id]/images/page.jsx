@@ -9,6 +9,8 @@ import { useSession } from 'next-auth/react';
 import updateImageTitle from '@/app/actions/updateImageTitle'; // Import your server action
 import MiniSpinner from '@/components/MiniSpinner';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const EditImageTitleModal = ({ isOpen, title, setTitle, onSave, onCancel, loadingSave }) => {
     if (!isOpen) return null;
@@ -116,7 +118,11 @@ const PropertyImages = ({ params: { id } }) => {
 
     return (
         <div className="container mx-auto px-5 md:px-10 lg:px-16 my-6">
-            <h1 className="text-3xl font-semibold text-center mb-5">Property Images</h1>
+            <Link href={`/properties/${property?._id}`} className="bg-primary hover:bg-foreground mb-2 p-2 text-primary-foreground rounded-md flex w-fit justify-center items-center">
+                <FaArrowLeft className='mx-2' /><span className='hidden md:block'>Back to Property</span>
+            </Link>
+            <h1 className="text-3xl font-semibold text-center my-5">Property Images</h1>
+
 
             <div className="photoTour">
                 {images.length > 0 ? (
