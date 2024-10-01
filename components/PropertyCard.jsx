@@ -47,22 +47,22 @@ const PropertyCard = ({ property }) => {
           ₹{getRateDisplay}
         </h3>
 
-        <div className="flex justify-center gap-8 lg:gap-10 mb-4 text-sm">
+        <div className="flex justify-evenly mb-4 text-sm">
           <p className='flex flex-col justify-center items-center'>
-            <FaBed className='inline ml-2 text-border' /> {" "}
+            <FaBed className='inline text-border' />
             {property.beds}{" "}Beds
           </p>
           <p className='flex flex-col justify-center items-center'>
-            <FaShower className='inline ml-2 text-border' />{" "}
+            <FaShower className='inline  text-border' />
             {property.baths}{" "}Baths
           </p>
           <p className='flex flex-col justify-center items-center'>
-            <FaRulerCombined className='inline ml-2 text-border' /> {" "}
+            <FaRulerCombined className='inline text-border' />
             {property.square_feet}{" "}sqft
           </p>
         </div>
 
-        <div className="flex justify-center gap-4 text-sm mb-4">
+        <div className="flex justify-evenly text-sm mb-4">
           {property.rates.nightly && (
             <p className='flex flex-col justify-center items-center'>
               <FaMoneyCheck className='inline ml-2 text-border' /> Nightly

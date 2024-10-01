@@ -38,8 +38,8 @@ const PropertyContactForm = ({ property }) => {
     }
 
     return (
-        <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
+        <div className="bg-input p-2 rounded-md shadow-lg">
+            <h3 className="text-xl font-bold mb-6">Contact Owner</h3>
             <form action={formAction}>
                 <input
                     type="hidden"

@@ -48,7 +48,7 @@ const FeaturedProperties = () => {
                     transitionTimingFunction: 'cubic-bezier(0.5, 0, 0.5, 1)',
                 },
                 '(max-width: 900px)': {
-                    slidesToShow: 3, // Tablet configuration
+                    slidesToShow: 2, // Tablet configuration
                 },
                 '(max-width: 500px)': {
                     slidesToShow: 1, // Mobile configuration
