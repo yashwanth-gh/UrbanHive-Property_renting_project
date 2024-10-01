@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Property from "@/models/Property";
 import User from "@/models/User";
 import Message from "@/models/Message";
+import Review from "@/models/Review";
 
 let isConnected = false;
 
@@ -15,6 +16,9 @@ const registerModels = () => {
   }
   if (!mongoose.models.Message) {
     mongoose.model("Message", Message.schema);
+  }
+  if (!mongoose.models.Review) {
+    mongoose.model("Review", Review.schema);
   }
 };
 

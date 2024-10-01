@@ -66,6 +66,7 @@ const PropertyPage = () => {
         router.push(`/properties/${id}/images`);
     };
 
+
     return (
         <section className='container'>
             {loading && <LoadingPage />}
@@ -88,13 +89,12 @@ const PropertyPage = () => {
 
                         {!loading && property &&
                             <aside className="space-y-3">
-                                {/* Tablet and larger devices */}
                                 <div className='flex flex-col gap-2 md:flex-row lg:flex-col'>
                                     <BookmarkButton property={property} />
                                     <ShareButton property={property} />
                                 </div>
                                 <Accordion>
-                                    <AccordionItem title="Contact">
+                                    <AccordionItem title="Contact manager">
                                         <PropertyContactForm property={property} />
                                     </AccordionItem>
                                 </Accordion>
@@ -136,7 +136,7 @@ export default PropertyPage;
 
 
 
-// "use client"
+// "use client";
 // import React, { useEffect, useState } from 'react';
 // import { getSingleProperty } from '@/utils/requests';
 // import { useParams, useRouter } from 'next/navigation';
@@ -152,13 +152,17 @@ export default PropertyPage;
 // import ShareButton from '@/components/ShareButton';
 // import PropertyContactForm from '@/components/PropertyContactForm';
 // import { useSession } from 'next-auth/react';
-
+// import Accordion from '@/components/Accordion';
+// import AccordionItem from '@/components/AccordionItem';
+// import PropertyReviews from '@/components/PropertyReviews';
+// import PropertyReviewButton from '@/components/PropertyReviewButton';
 
 // const PropertyPage = () => {
 //     const [loading, setLoading] = useState(true);
 //     const [property, setProperty] = useState(null);
 //     const { id } = useParams();
 //     const [showModal, setShowModal] = useState(false);
+//     const [showAllReviews, setShowAllReviews] = useState(false);
 //     const router = useRouter();
 //     const { data: session } = useSession();
 //     const userId = session?.user?.id;
@@ -174,46 +178,37 @@ export default PropertyPage;
 //             } finally {
 //                 setLoading(false);
 //             }
-//         }
+//         };
 //         if (property === null) fetchProperty();
-//     }, [id, property])
+//     }, [id, property]);
 
 //     if (!property && !loading)
 //         return (
-//             <div className=' h-screen w-full container flex flex-col items-center justify-center md:justify-start'>
-//                 <Image
-//                     className=''
-//                     src={property_not_found}
-//                 />
+//             <div className='h-screen w-full container flex flex-col items-center justify-center md:justify-start'>
+//                 <Image className='' src={property_not_found} />
 //                 <h3 className='text-lg md:text-2xl -mt-6 font-semibold'>This Property is not existing</h3>
 //             </div>
 //         );
 
 //     useEffect(() => {
-//         // Check if the "Remind Me Later" flag is set in session storage
 //         const remindLaterFlag = sessionStorage.getItem(`remindLater_${id}`);
-
-//         // If the first image title is "Image title" and the remindLaterFlag is not set, show the modal
 //         if (!loading && userId === property?.owner && property?.images[0]?.title === "Image title" && !remindLaterFlag) {
 //             setShowModal(true);
 //         }
 //     }, [loading, property]);
 
-//     // Function to handle the "Remind Me Later" button (closes modal and sets session storage)
 //     const handleCloseModal = () => {
-//         // Set the "Remind Me Later" flag in session storage, tied to the specific property ID
 //         sessionStorage.setItem(`remindLater_${id}`, 'true');
 //         setShowModal(false);
 //     };
 
-//     // Function to handle the "Edit Images" button (redirects to edit page)
 //     const handleEditRedirect = () => {
 //         setShowModal(false);
 //         router.push(`/properties/${id}/images`);
 //     };
 
-
-
+//     // Display only the first two reviews
+//     const displayReviews = property?.reviews?.slice(0, 2) || [];
 
 //     return (
 //         <section className='container'>
@@ -231,23 +226,58 @@ export default PropertyPage;
 //             </div>
 
 //             <section className="container bg-secondary rounded-b-lg">
-//                 <div className=" m-auto py-10 md:px-6">
-//                     <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-
+//                 <div className="m-auto py-10 md:px-6">
+//                     <div className="grid grid-cols-1 lg:grid-cols-70/30 w-full gap-6">
 //                         {!loading && property && <PropertyPageDetails property={property} />}
+
 //                         {!loading && property &&
 //                             <aside className="space-y-3">
-//                                 <BookmarkButton property={property} />
-//                                 <ShareButton property={property} />
-//                                 <PropertyContactForm property={property} />
+//                                 {/* Tablet and larger devices */}
+//                                 <div className='flex flex-col gap-2 md:flex-row lg:flex-col'>
+//                                     <BookmarkButton property={property} />
+//                                     <ShareButton property={property} />
+//                                     <PropertyReviewButton property={property} />
+//                                 </div>
+//                                 <Accordion>
+//                                     <AccordionItem title="Contact manager">
+//                                         <PropertyContactForm property={property} />
+//                                     </AccordionItem>
+//                                 </Accordion>
 //                             </aside>
 //                         }
-
 //                     </div>
 //                 </div>
 //             </section>
+
+//             {/* Display the first two reviews */}
+//             {!loading && property && displayReviews.length > 0 && (
+//                 <div className="container">
+//                     <h2 className="text-lg font-semibold">Recent Reviews</h2>
+//                     <div className="reviews-container">
+//                         {displayReviews.map((review) => (
+//                             <div key={review._id} className="review">
+//                                 <Image
+//                                     src={review.user.image}
+//                                     alt={review.user.username}
+//                                     className="review-avatar"
+//                                     width={40}
+//                                     height={40}
+//                                     layout="fixed"
+//                                 />
+//                                 <div>
+//                                     <h3>{review.user.username}</h3>
+//                                     <p>Rating: {review.rating} ★</p>
+//                                     <p>{review.reviewText}</p>
+//                                 </div>
+//                             </div>
+//                         ))}
+//                     </div>
+//                     <PropertyReviews reviews={property.reviews || []} />
+//                 </div>
+//             )}
+
 //             {!loading && property && <PropertyCarousel images={property?.images} property={property} />}
-//             {/* Modal for Image Title Check */}
+
 //             {showModal && (
 //                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
 //                     <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -271,7 +301,8 @@ export default PropertyPage;
 //                 </div>
 //             )}
 //         </section>
-//     )
-// }
+//     );
+// };
 
-// export default PropertyPage
+// export default PropertyPage;
+

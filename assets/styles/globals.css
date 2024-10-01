@@ -296,58 +296,88 @@
   }
 
   /*^ -----------------Blazer slider END------------------  */
-  /* 
-  .imageContainer {
-    @apply px-5 md:px-10 lg:px-16;
-  }
 
-  .title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .photoTour {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .imageGallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  .imageWrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s;
-  }
-
-  .imageWrapper:hover .image {
-    transform: scale(1.05);
-  }
-
-  .imageTitle {
-    text-align: center;
-    font-size: 1rem;
-    padding: 10px;
-    margin: 0;
-    background: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    bottom: 0;
+  /*^ -----------------Property review START------------------  */
+  .modal {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-  } */
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px; /* Adjust as needed */
+    width: 90%; /* Makes it responsive */
+    max-height: 80vh; /* Limits height for scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .close {
+    cursor: pointer;
+    float: right;
+    font-size: 24px;
+  }
+
+  .modal-title {
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  .reviews-container {
+    max-height: 60vh; /* Adjust as needed for scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+  }
+
+  .review {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .review-avatar {
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .review h3 {
+    margin: 0;
+  }
+
+  .review p {
+    margin: 1px 0;
+  }
+
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%; /* More space on mobile */
+      padding: 15px;
+    }
+
+    .review-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .review-header h3 {
+      margin: 5px 0;
+    }
+  }
+
+  /*^ -----------------Property review END------------------  */
 }

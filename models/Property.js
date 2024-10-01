@@ -91,6 +91,19 @@ const PropertySchema = new Schema(
       type: Boolean,
       required: true,
     },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
+    rating: {
+      type: Number,
+      default: 4, // Default rating set to 4 stars
+      min: 0, // Minimum value for rating
+      max: 5, // Maximum value for rating
+      required: true,
+    },
   },
   {
     timestamps: true,

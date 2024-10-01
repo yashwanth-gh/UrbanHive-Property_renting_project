@@ -21,7 +21,8 @@ const PropertyContactForm = ({ property }) => {
     }, [state]);
 
     if (!session) {
-        return null; // Return null or an alternative UI when there's no session
+        return <p className="text-sm text-border">Login/SignUp to contact</p>
+        // Return null or an alternative UI when there's no session
     }
 
     if (state && state.success) {
