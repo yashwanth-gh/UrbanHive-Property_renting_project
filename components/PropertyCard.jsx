@@ -32,7 +32,7 @@ const PropertyCard = ({ property }) => {
         <div className="text-left mb-2">
           <div className="text-border text-sm flex justify-between items-center">
             {property.type}
-            <PropertyRating rating={property?.rating} />
+            <PropertyRating rating={property?.rating} textSize='text-md' showAllStars={false} />
           </div>
 
           <h3 className="text-xl font-bold w-fit">

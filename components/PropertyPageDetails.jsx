@@ -26,8 +26,11 @@ const PropertyPageDetails = ({ property }) => {
     <main>
       {/* Property Info Section */}
       <div className="bg-primary-foreground p-2 md:p-6 rounded-lg shadow-md text-center md:text-left">
-        <div className="text-border mb-4">
+        <div className="text-border mb-4 flex justify-between items-center">
+          <span>
           <FaRegBuilding className='inline-block mr-2' />{property?.type}
+          </span>
+          <PropertyRating rating={property?.rating} textSize='text-md'/>
         </div>
         <h1 className="text-3xl font-extrabold mb-4">{property?.name}</h1>
         <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
@@ -148,14 +151,14 @@ const ReviewCard = ({ review }) => (
       <Image
         src={review?.user?.image}
         alt={review?.user?.username}
-        className="review-avatar rounded-full"
-        width={50}
-        height={50}
-        layout="fixed"
+        className="review-avatar  w-35 h-35 md:w-[50px] md:h-auto "
+        width={35}
+        height={35}
+        sizes='50vw'
       />
-      <div className="ml-3">
-        <h3 className="font-semibold text-md">{review?.user?.username}</h3>
-        <p className="text-gray-500 text-sm">{formatTimeElapsed(review?.createdAt)}</p>
+      <div className="ml-3 inline">
+        <h3 className="font-semibold text-sm md:text-md">{review?.user?.username}</h3>
+        <p className="text-gray-500 text-sm md:text-md">{formatTimeElapsed(review?.createdAt)}</p>
       </div>
     </div>
     <PropertyRating rating={review?.rating} />

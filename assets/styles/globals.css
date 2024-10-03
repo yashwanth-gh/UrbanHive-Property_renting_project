@@ -344,9 +344,7 @@
   }
 
   .review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .review-avatar {
@@ -370,8 +368,7 @@
     }
 
     .review-header {
-      flex-direction: column;
-      align-items: flex-start;
+
     }
 
     .review-header h3 {
