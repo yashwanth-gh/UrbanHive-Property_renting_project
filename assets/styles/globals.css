@@ -366,15 +366,17 @@
       width: 95%; /* More space on mobile */
       padding: 15px;
     }
-
-    .review-header {
-
-    }
-
     .review-header h3 {
       margin: 5px 0;
     }
   }
 
   /*^ -----------------Property review END------------------  */
+  .about {
+    @apply container relative -mt-16 h-screen flex flex-col justify-center items-center;
+  }
+
+  .about-content {
+    @apply absolute bottom-1/2 translate-y-3/4 text-center px-1 lg:px-28 mx-auto flex flex-col ;
+  }
 }

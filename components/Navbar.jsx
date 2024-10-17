@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
+import UrbanHive_transparent_logo_gold from '@/assets/images/logo-no-background.png'
 import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
 import { FaGoogle, FaRegUser } from 'react-icons/fa';
@@ -11,6 +12,8 @@ import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 import UnreadMsgCount from '@/components/UnreadMsgCount'
 import MiniSpinner from './MiniSpinner'
+import { TfiMenuAlt } from "react-icons/tfi";
+
 
 const Navbar = () => {
     const { data: session } = useSession()
@@ -77,24 +80,26 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`topbar ${pathname === "/" ? 'bg-sky-300' : 'bg-background'} bg-opacity-30 backdrop-blur-xl navbar ${showNavbar ? 'visible' : 'hidden'}`}>
+        <nav className={`topbar ${pathname === "/" ? 'bg-sky-300' : (pathname === "/about" ? 'bg-transparent' :'bg-background')} bg-opacity-30 backdrop-blur-xl navbar ${showNavbar ? 'visible' : 'hidden'}`}>
             <div className='flex justify-start gap-6 lg:w-auto '>
                 {/* hamburger menu for mobile */}
                 <div className='lg:hidden flex justify-center items-center cursor-pointer'
                     onClick={() => setIsMenuActive(prev => !prev)}
                     ref={hamburgerRef}
                 >
-                    <Image
+                    {/* <Image
                         src={hamburger}
                         className='h-5 w-5'
                         alt='menu'
-                    />
+                    /> */}
+                    <TfiMenuAlt className={`${pathname=='/about' ? 'text-[#f9d265]': ''} text-xl mt-1.5 ml-1.5`}/>
+
                 </div>
                 <div className=''>
                     {/* logo */}
                     <Link href="/">
                         <Image
-                            src={UrbanHive_transparent_logo}
+                            src={(pathname=='/about')?UrbanHive_transparent_logo_gold:UrbanHive_transparent_logo}
                             className='h-7 lg:h-10 w-auto'
                             alt='logo'
                             priority
@@ -107,11 +112,11 @@ const Navbar = () => {
                 <div className=" hidden lg:flex space-x-2 text-md font-semibold text-foreground">
                     <Link
                         href="/"
-                        className={`${pathname === "/" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
+                        className={`${pathname === "/" ? 'text-primary-foreground' : ''} hover:text-primary px-3 py-2`}
                     >Home</Link>
                     <Link
                         href="/about"
-                        className={`${pathname === "/about" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
+                        className={`${pathname === "/about" ? 'text-[#f9d265]' : ''} hover:text-primary px-3 py-2`}
                     >About</Link
                     >
                     <Link
@@ -121,7 +126,7 @@ const Navbar = () => {
                     >
                     {session && (<Link
                         href="/properties/add"
-                        className={`${pathname === "/property/add" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
+                        className={`${pathname === "/properties/add" ? 'text-primary' : ''} hover:text-primary px-3 py-2`}
                     >Add Property</Link
                     >)}
                 </div>
