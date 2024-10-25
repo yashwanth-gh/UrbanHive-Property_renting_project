@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { memo, useMemo } from 'react';
-import { FaBed, FaMapMarkerAlt, FaMoneyCheck, FaRulerCombined, FaShower } from 'react-icons/fa';
+import { TbBed,TbCurrentLocation,TbCashBanknote,TbRuler,TbBath   } from "react-icons/tb";
+
 import PropertyRating from './PropertyRating';
 
 const PropertyCard = ({ property }) => {
@@ -49,15 +50,15 @@ const PropertyCard = ({ property }) => {
 
         <div className="flex justify-evenly mb-4 text-sm">
           <p className='flex flex-col justify-center items-center'>
-            <FaBed className='inline text-border' />
+            <TbBed className='inline text-border text-xl' />
             {property.beds}{" "}Beds
           </p>
           <p className='flex flex-col justify-center items-center'>
-            <FaShower className='inline  text-border' />
+            <TbBath  className='inline  text-border text-xl' />
             {property.baths}{" "}Baths
           </p>
           <p className='flex flex-col justify-center items-center'>
-            <FaRulerCombined className='inline text-border' />
+            <TbRuler  className='inline text-border text-xl' />
             {property.square_feet}{" "}sqft
           </p>
         </div>
@@ -65,17 +66,17 @@ const PropertyCard = ({ property }) => {
         <div className="flex justify-evenly text-sm mb-4">
           {property.rates.nightly && (
             <p className='flex flex-col justify-center items-center'>
-              <FaMoneyCheck className='inline ml-2 text-border' /> Nightly
+              <TbCashBanknote  className='inline ml-2 text-gray-500 text-xl' /> Nightly
             </p>
           )}
           {property.rates.weekly && (
             <p className='flex flex-col justify-center items-center'>
-              <FaMoneyCheck className='inline ml-2 text-border' /> Weekly
+              <TbCashBanknote  className='inline ml-2 text-gray-500 text-xl' /> Weekly
             </p>
           )}
           {property.rates.monthly && (
             <p className='flex flex-col justify-center items-center'>
-              <FaMoneyCheck className='inline ml-2 text-border' /> Monthly
+              <TbCashBanknote  className='inline ml-2 text-gray-500 text-xl' /> Monthly
             </p>
           )}
         </div>
@@ -85,7 +86,7 @@ const PropertyCard = ({ property }) => {
         <div className="flex flex-col lg:flex-row justify-between mb-1">
           <div className="flex flex-col align-middle gap-2 mb-4 lg:mb-0">
             <div className='flex align-middle gap-2 mb-4 lg:mb-0'>
-              <FaMapMarkerAlt className='inline text-destructive mt-1' />
+              <TbCurrentLocation  className='inline text-destructive mt-1' />
               <span className='text-destructive'>{property.location.city}</span>
             </div>
 

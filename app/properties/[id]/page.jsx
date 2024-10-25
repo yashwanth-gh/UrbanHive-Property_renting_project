@@ -8,7 +8,7 @@ import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import LoadingPage from '@/app/loading';
 import Link from 'next/link';
 import PropertyPageDetails from '@/components/PropertyPageDetails';
-import { FaChevronCircleLeft, FaRegBell } from 'react-icons/fa';
+import { TbArrowBackUp ,TbBell  } from "react-icons/tb";
 import PropertyCarousel from '@/components/PropertyCarousel';
 import BookmarkButton from '@/components/BookmarkButton';
 import ShareButton from '@/components/ShareButton';
@@ -77,7 +77,7 @@ const PropertyPage = () => {
                         href="/properties"
                         className="text-foreground font-medium hover:text-primary-foreground flex items-center bg-background p-2 rounded-lg hover:bg-primary transition-colors duration-300 ease-in-out"
                     >
-                        <FaChevronCircleLeft className='mr-2 text-lg' /> Back to Properties
+                        <TbArrowBackUp  className='mr-2 text-lg' /> Back to Properties
                     </Link>
                 </div>
             </div>
@@ -116,7 +116,7 @@ const PropertyPage = () => {
                                 className="bg-destructive text-white px-4 py-2 rounded hover:bg-gray-600 transition"
                                 onClick={handleCloseModal}
                             >
-                                <FaRegBell className='inline  mr-2' />Later
+                                <TbBell  className='inline  mr-2' />Later
                             </button>
                             <button
                                 className="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition"

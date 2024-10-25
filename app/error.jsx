@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaExclamationCircle } from 'react-icons/fa'
+
 
 const ErrorPage = ({ error }) => {
     return (

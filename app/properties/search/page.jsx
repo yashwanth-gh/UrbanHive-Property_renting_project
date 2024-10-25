@@ -5,7 +5,7 @@ import Property from '@/models/Property';
 import { convertToSerializableObjects } from '@/utils/convertToObjects';
 import Link from 'next/link';
 import React from 'react'
-import { FaArrowAltCircleLeft } from 'react-icons/fa';
+import { TbArrowBackUp  } from 'react-icons/tb';
 
 const SearchPage = async ({ searchParams: { location, propertyType } }) => {
     await DB_Connect();
@@ -41,7 +41,7 @@ const SearchPage = async ({ searchParams: { location, propertyType } }) => {
             <section className='px-4 py-6 container'>
                 <div className='m-auto px-4 py-2 block'>
                     <Link href='/properties' className='flex items-center text-foreground hover:underline hover:text-blue-400 mb-3 w-fit'>
-                        <FaArrowAltCircleLeft className='mr-2' />&nbsp;Back To Properties
+                        <TbArrowBackUp  className='mr-2' />&nbsp;Back To Properties
                     </Link>
                     <h1 className='text-2xl  mb-4 text-center font-semibold'>-: Search results :-</h1>
                     {properties.length > 0 ? (

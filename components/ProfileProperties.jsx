@@ -2,7 +2,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { TbEdit, TbTrash } from "react-icons/tb";
+
 import addPropImage from '@/public/images/addProp.png';
 import deleteProperty from '@/app/actions/deleteProperty';
 import MiniSpinner from '@/components/MiniSpinner'; // Adjust the path as needed
@@ -81,14 +82,14 @@ const ProfileProperties = ({ userProperties: initialProperties }) => {
                     <div className="mt-2">
                         <Link href={`/properties/${property._id}/edit`}
                             className="bg-primary text-white px-3 py-2.5 rounded-md mr-2 hover:bg-secondary hover:text-foreground duration-150"
-                        ><FaEdit className='inline mr-2 text-xs mb-1' />
+                        ><TbEdit  className='inline mr-2 text-xs mb-1' />
                             Edit
                         </Link>
                         <button
                             className="bg-foreground text-primary-foreground px-3 py-2 rounded-md hover:bg-red-600 duration-150"
                             type="button"
                             onClick={() => handleDeleteClick(property)}
-                        ><FaTrash className='inline mr-2 text-xs mb-1' />
+                        ><TbTrash className='inline mr-2 text-xs mb-1' />
                             Delete
                         </button>
                     </div>

@@ -4,15 +4,13 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import UrbanHive_transparent_logo from '@/assets/images/urbanhive-logo-black-transparent.png'
 import UrbanHive_transparent_logo_gold from '@/assets/images/logo-no-background.png'
-import hamburger from '@/assets/images/hamburger.png'
 import Link from 'next/link'
-import { FaGoogle, FaRegUser } from 'react-icons/fa';
-import { TbMessage2Question } from "react-icons/tb";
+import { TbMessage2Question,TbLogin,TbUser ,TbMenuDeep    } from "react-icons/tb";
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, getProviders, useSession } from 'next-auth/react';
 import UnreadMsgCount from '@/components/UnreadMsgCount'
 import MiniSpinner from './MiniSpinner'
-import { TfiMenuAlt } from "react-icons/tfi";
+
 
 
 const Navbar = () => {
@@ -82,18 +80,11 @@ const Navbar = () => {
     return (
         <nav className={`topbar ${pathname === "/" ? 'bg-sky-300' : (pathname === "/about" ? 'bg-transparent' :'bg-background')} bg-opacity-30 backdrop-blur-xl navbar ${showNavbar ? 'visible' : 'hidden'}`}>
             <div className='flex justify-start gap-6 lg:w-auto '>
-                {/* hamburger menu for mobile */}
                 <div className='lg:hidden flex justify-center items-center cursor-pointer'
                     onClick={() => setIsMenuActive(prev => !prev)}
                     ref={hamburgerRef}
                 >
-                    {/* <Image
-                        src={hamburger}
-                        className='h-5 w-5'
-                        alt='menu'
-                    /> */}
-                    <TfiMenuAlt className={`${pathname=='/about' ? 'text-[#f9d265]': ''} text-xl mt-1.5 ml-1.5`}/>
-
+                    <TbMenuDeep  className={`${pathname=='/about' ? 'text-[#f9d265]': ''} text-xl mt-1.5 ml-1.5`}/>
                 </div>
                 <div className=''>
                     {/* logo */}
@@ -138,7 +129,7 @@ const Navbar = () => {
                             {providers ? (Object.values(providers).map((provider, index) => (
                                 <button className='flex justify-center items-center px-2.5 py-1.5' key={index}
                                     onClick={() => signIn(provider.id)}>
-                                    <FaGoogle />
+                                    <TbLogin    />
                                     <span className='lg:px-1 lg:pl-2 pl-1.5'>Login / Signup</span>
                                 </button>
                             ))) : (
@@ -183,7 +174,7 @@ const Navbar = () => {
                                                 height={40}
                                             />
                                         ) : (
-                                            <FaRegUser className='h-7 w-7 text-foreground' />
+                                            <TbUser  className='h-7 w-7 text-foreground' />
                                         )}
 
                                     </button>

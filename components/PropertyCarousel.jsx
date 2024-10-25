@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaRegImage } from 'react-icons/fa'
+import { TbPhoto } from "react-icons/tb";
 
 const PropertyCarousel = ({ images, property }) => {
 
@@ -55,7 +55,7 @@ const PropertyCarousel = ({ images, property }) => {
                         href={`/properties/${property._id}/images`}
                         className="absolute bottom-4 right-4 text-foreground font-medium hover:text-primary-foreground flex items-center bg-background py-3 px-6 text-sm rounded-lg hover:bg-primary transition-colors duration-300 ease-in-out"
                     >
-                        <FaRegImage />&nbsp;
+                        <TbPhoto />&nbsp;
                         View More
                     </Link>
                 </div>

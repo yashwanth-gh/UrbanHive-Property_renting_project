@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import {
-  FaAngleDoubleDown, FaAngleDoubleUp, FaBed, FaCheckCircle, FaMapPin, 
-  FaRegBuilding, FaRulerCombined, FaShower 
-} from 'react-icons/fa';
+import {TbBath,TbRuler,TbBed,TbCurrentLocation,TbBuilding,TbCaretUpDown  } from 'react-icons/tb';
 import PropertyMap from './PropertyMap';
 import PropertyReviews from './PropertyReviews';
 import PropertyRating from './PropertyRating'; 
 import Image from 'next/image';
 import { formatTimeElapsed } from '@/utils/calculateTime';
 import PropertyReviewButton from './PropertyReviewButton';
+import PropertyAmenities from './PropertyAmenities';
 
 const formatNumberToIndian = (number) => number.toLocaleString('en-IN');
 
@@ -28,14 +26,14 @@ const PropertyPageDetails = ({ property }) => {
       <div className="bg-primary-foreground p-2 md:p-6 rounded-lg shadow-md text-center md:text-left">
         <div className="text-border mb-4 flex justify-between items-center">
           <span>
-          <FaRegBuilding className='inline-block mr-2' />{property?.type}
+          <TbBuilding  className='inline-block mr-2' />{property?.type}
           </span>
           <PropertyRating rating={property?.rating} textSize='text-md'/>
         </div>
         <h1 className="text-3xl font-extrabold mb-4">{property?.name}</h1>
         <div className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
           <p className="text-destructive">
-            <FaMapPin className='inline mr-2' />
+            <TbCurrentLocation className='inline mr-2' />
             {`${property?.location?.street}, ${property?.location?.city} - ${property?.location?.zipcode}, ${property?.location?.state}`}
           </p>
         </div>
@@ -67,9 +65,9 @@ const PropertyPageDetails = ({ property }) => {
       <div className="bg-primary-foreground p-6 rounded-lg shadow-md mt-6">
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
         <div className="flex justify-center gap-8 lg:gap-10 mb-4">
-          <InfoBadge icon={FaBed} label={`${property?.beds} Beds`} />
-          <InfoBadge icon={FaShower} label={`${property?.baths} Baths`} />
-          <InfoBadge icon={FaRulerCombined} label={`${property?.square_feet} sqft`} />
+          <InfoBadge icon={TbBed} label={`${property?.beds} Beds`} />
+          <InfoBadge icon={TbBath} label={`${property?.baths} Baths`} />
+          <InfoBadge icon={TbRuler} label={`${property?.square_feet} sqft`} />
         </div>
 
         <p className="mb-4">
@@ -88,8 +86,7 @@ const PropertyPageDetails = ({ property }) => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none">
           {amenitiesToShow?.map((amenity, index) => (
             <li key={index} className='font-semibold mx-1 my-2'>
-              <FaCheckCircle className='text-foreground inline mr-2 text-xl' />
-              {amenity}
+              <PropertyAmenities amenity={amenity}/>
             </li>
           ))}
         </ul>
@@ -130,7 +127,7 @@ const PropertyPageDetails = ({ property }) => {
 
 const InfoBadge = ({ icon: Icon, label }) => (
   <p className="flex flex-col justify-center items-center text-center">
-    <Icon className="hidden md:inline ml-2 text-border" />
+    <Icon className="hidden md:inline ml-2 text-border text-2xl" />
     <span className="inline text-lg md:text-xl font-bold">{label}</span>
   </p>
 );
@@ -141,7 +138,7 @@ const ToggleButton = ({ isExpanded, toggleAction, label }) => (
     onClick={toggleAction}
   >
     {isExpanded ? `Show Less ${label}` : `Show More ${label}`}
-    {isExpanded ? <FaAngleDoubleUp className="ml-2" /> : <FaAngleDoubleDown className="ml-2" />}
+    {isExpanded ? <TbCaretUpDown  className="ml-2" /> : <TbCaretUpDown  className="ml-2" />}
   </button>
 );
 

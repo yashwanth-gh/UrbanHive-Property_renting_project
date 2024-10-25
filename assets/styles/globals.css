@@ -286,6 +286,11 @@
     width: 100%;
     height: 100%;
   }
+
+  .half-yellow-bg {
+    background: linear-gradient(to right, #fde047 50%, transparent 50%);
+}
+
   /*^ -----------------checkbox style END------------------  */
 
   /*^ -----------------Blazer slider START------------------  */
@@ -391,7 +396,16 @@
     border-radius: 72% 28% 29% 71% / 62% 73% 27% 38%;
   }
   .about-pattern {
-    background-color: #e5e5f7;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 5px ), repeating-linear-gradient( #444cf755, #444cf7 );
+    background-color: #fff36d;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffc9c9 5px ), repeating-linear-gradient( #ffd900, #ff7b6f );
+  }
+
+  path {
+    fill: transparent;
+  }
+  
+  text {
+    fill: #000;
+
   }
 }

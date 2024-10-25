@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { TbArrowsLeft  ,TbArrowLeft, TbArrowsRight,TbArrowRight  } from "react-icons/tb";
 
 const PaginationComponent = ({ page, pageSize, totalItems }) => {
     const totalPages = Math.ceil(totalItems / pageSize);
@@ -63,7 +63,7 @@ const PaginationComponent = ({ page, pageSize, totalItems }) => {
                 className={`pagination-button ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''} py-2 px-4 bg-gray-300 rounded-lg w-full h-full`}
                 title='First Page'
             >
-                <FaAngleDoubleLeft className='text-xl' />
+                <TbArrowsLeft  className='text-xl' />
             </button>
 
             <button
@@ -72,7 +72,7 @@ const PaginationComponent = ({ page, pageSize, totalItems }) => {
                 className={`pagination-button ${page === 1 ? 'opacity-50 cursor-not-allowed' : ''} py-2 px-4 bg-gray-300 rounded-lg w-full h-full`}
                 title='Previous Page'
             >
-                <FaAngleLeft className='text-xl' />
+                <TbArrowLeft   className='text-xl' />
             </button>
 
             {renderPageButtons()}
@@ -83,7 +83,7 @@ const PaginationComponent = ({ page, pageSize, totalItems }) => {
                 className={`pagination-button ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''} py-2 px-4 bg-gray-300 rounded-lg w-full h-full`}
                 title='Next Page'
             >
-                <FaAngleRight className='text-xl' />
+                <TbArrowRight className='text-xl' />
             </button>
 
             <button
@@ -92,7 +92,7 @@ const PaginationComponent = ({ page, pageSize, totalItems }) => {
                 className={`pagination-button ${page === totalPages ? 'opacity-50 cursor-not-allowed' : ''} py-2 px-4 bg-gray-300 rounded-lg w-full h-full`}
                 title='Last Page'
             >
-                <FaAngleDoubleRight className='text-xl' />
+                <TbArrowsRight className='text-xl' />
             </button>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
-import { FaCircle } from 'react-icons/fa';
+import { TbCircleLetterN  } from "react-icons/tb";
 
 const MessageList = ({ messages, selectedMessageId, onSelectMessage }) => {
     return (
@@ -28,7 +28,7 @@ const MessageList = ({ messages, selectedMessageId, onSelectMessage }) => {
                         </div>
                         {!message.read && (
                             <span className="text-green-500 text-sm font-medium">
-                                <FaCircle className='inline mb-1  mr-1' />
+                                <TbCircleLetterN  className='inline mb-1  mr-1' />
                                 <p className='hidden lg:inline '>Unread</p>
                             </span>
                         )}

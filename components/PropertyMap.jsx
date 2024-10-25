@@ -49,7 +49,7 @@ const PropertyMap = ({ property }) => {
 
     useEffect(() => {
         if (map.current || !mapContainer.current) return;
-
+    
         map.current = new maptilersdk.Map({
             container: mapContainer.current,
             style: maptilersdk.MapStyle.STREETS,
@@ -57,7 +57,21 @@ const PropertyMap = ({ property }) => {
             zoom,
             fullscreenControl: true
         });
-
+    
+        // Listen for missing images and add them
+        map.current.on('styleimagemissing', (e) => {
+            const imageName = e.id;
+            if (imageName === "jain") {
+                map.current.addImage("jain", {
+                    width: 30,
+                    height: 30,
+                    data: new Uint8Array(30 * 30 * 4), // Dummy image data (transparent)
+                    // You could load an actual image here instead using a URL or image file
+                });
+            }
+        });
+    
+        // Add marker
         new maptilersdk.Marker({ color: "#000" })
             .setLngLat([coordinates.longitude, coordinates.latitude])
             .addTo(map.current);

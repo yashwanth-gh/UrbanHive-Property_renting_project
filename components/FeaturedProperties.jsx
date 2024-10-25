@@ -6,7 +6,8 @@ import React, { useState, useEffect, useRef } from "react";
 import BlazeSlider from "blaze-slider";
 import "blaze-slider/dist/blaze.css"; // Import BlazeSlider CSS
 import MiniSpinner from "./MiniSpinner";
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaArrowLeft, FaArrowRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { TbArrowBigLeft ,TbArrowBigRight  } from "react-icons/tb";
+
 
 const FeaturedProperties = () => {
     const [properties, setProperties] = useState([]);
@@ -84,11 +85,11 @@ const FeaturedProperties = () => {
                                     <button
                                         className="blaze-prev"
                                         aria-label="Go to previous slide"
-                                    ><FaArrowLeft className="text-xl text-primary-foreground" /></button>
+                                    ><TbArrowBigLeft  className="text-xl text-primary-foreground" /></button>
                                     <button
                                         className="blaze-next"
                                         aria-label="Go to next slide"
-                                    ><FaArrowRight className="text-xl text-primary-foreground" /></button>
+                                    ><TbArrowBigRight className="text-xl text-primary-foreground" /></button>
                                 </div>
                             </div>
                         </div>

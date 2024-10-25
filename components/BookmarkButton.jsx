@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FaBookmark } from 'react-icons/fa';
+import { TbBookmark  } from 'react-icons/tb';
 import MiniSpinner from './MiniSpinner';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
@@ -68,7 +68,7 @@ const BookmarkButton = ({ property }) => {
                 </>
             ) : (
                 <>
-                    <FaBookmark className="mr-3" />
+                    <TbBookmark  className="mr-1" />
                     {isBookmarked ? 'Remove Bookmark' : 'Bookmark Property'}
                 </>
             )}

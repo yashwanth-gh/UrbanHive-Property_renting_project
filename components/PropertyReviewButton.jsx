@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSession } from 'next-auth/react';
 import { toast } from 'react-toastify';
 import addPropertyReview from '@/app/actions/addPropertyReview';
-import { MdRateReview } from 'react-icons/md';
+import { TbPencilStar  } from 'react-icons/tb';
 
 const PropertyReviewButton = ({ property }) => {
     const { data: session } = useSession();
@@ -82,7 +82,7 @@ const PropertyReviewButton = ({ property }) => {
                 className="bg-foreground text-white font-bold py-2 px-4 rounded w-full my-2"
                 onClick={() => setIsOpen(true)}
             >
-                <MdRateReview className="inline mr-2" />
+                <TbPencilStar className="inline mr-3 mb-0.5 text-xl" />
                 Add Review
             </button>
 

@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import Image from 'next/image';
 import { formatTimeElapsed } from '@/utils/calculateTime';
 import PropertyRating from './PropertyRating';
-import { IoCloseCircleSharp } from "react-icons/io5";
 
 const PropertyReviews = ({ reviews = [] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +67,7 @@ const PropertyReviews = ({ reviews = [] }) => {
                 <div className="modal">
                     <div className="modal-content relative">
                         <span className="close cursor-pointer absolute top-2 right-2 text-gray-500 text-2xl" onClick={handleCloseModal}> 
-                            <IoCloseCircleSharp className='text-foreground text-3xl' />
+                            <h3 className='text-foreground text-2xl px-1.5 mr-2 font-semibold rounded-md border-black border-b-4 border-l-4 border' >#</h3>
                         </span>
                         <h2 className="modal-title text-lg font-semibold mb-4">Reviews</h2>
                         <div className="reviews-container">

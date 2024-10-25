@@ -51,7 +51,7 @@ const AboutTeam = () => {
                 </div>
             </div>
             {/* Team Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-1 md:gap-8">
                 {teamMembers.map((member, index) => (
                     <AboutTeamCard
                         key={index}
@@ -60,6 +60,30 @@ const AboutTeam = () => {
                         role={member.role}
                     />
                 ))}
+            </div>
+            <div className='-mx-6'>
+                <svg viewBox="0 0 700 200" className="w-full h-auto">
+                    {/* Sideways S curve for the text */}
+                    <path id="s-curve" d="M -20 150 Q 25 10 180 100 T 355 110 T 520 100 T 730 70" fill="transparent"  />
+
+                    {/* Line above the text */}
+                    <path d="M -25 110 Q 45 0 185 85 T 345 80 T 520 55 T 710 10" stroke="#FFD700" strokeWidth="3" fill="transparent" />
+
+                    {/* Text along the S curve */}
+                    <text>
+                        <textPath href="#s-curve" startOffset="6%" className="text-lg md:text-sm playwrite-400">
+                            Innovation • Creativity • Future-Driven Solutions • urban spaces • Teamwork • Vision • Sustainability • Growth • Design Excellence • Community Building • Leadership • Technology • Transformation
+                        </textPath>
+                    </text>
+
+                    {/* Line below the text */}
+                    <path d="M -25 160 Q 25 20 180 110 T 360 120 T 520 130 T 720 160" stroke="#FFD700" strokeWidth="6" fill="transparent" />
+                </svg>
+
+            </div>
+
+            <div>
+                <h2 className='text-xl md:text-3xl font-bold playwrite-400 text-center'>Our Values</h2>
             </div>
         </div>
     )

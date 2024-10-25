@@ -3,8 +3,8 @@ import React from 'react'
 import user from '@/assets/images/user.png';
 import DB_Connect from '@/config/DB_Connect';
 import { getSessionUser } from '@/utils/getSessionUser';
-import { error } from 'console';
-import { FaClock, FaEnvelope, FaLocationArrow } from 'react-icons/fa';
+import { TbClock,TbBrandMailgun,TbCurrentLocation} from "react-icons/tb";
+
 import User from '@/models/User';
 import { getUserDuration } from '@/utils/calculateTime';
 import Property from '@/models/Property';
@@ -57,12 +57,11 @@ const ProfilePage = async () => {
                             </div>
                             <h2 className="text-lg lg:text-2xl mb-2 font-bold"> {sessionUser.user.name}</h2>
                             <p className='text-sm font-normal mb-4'>This is a hard coded Bio, replace this with dynamic bio!</p>
-                            <p className='text-xs mb-2'><FaEnvelope className='inline mr-2' />{sessionUser.user.email}</p>
-                            <p className='text-xs mb-2'><FaLocationArrow className='inline mr-2' />{"Bengaluru"}</p>
-                            <p className='text-xs italic'><FaClock className='inline mr-2' />{memberSinceText} on UrbanHive</p> {/* Added membership duration */}
+                            <p className='text-xs mb-2'><TbBrandMailgun  className='inline mr-2' />{sessionUser.user.email}</p>
+                            <p className='text-xs mb-2'><TbCurrentLocation  className='inline mr-2' />{"Bengaluru"}</p>
+                            <p className='text-xs italic'><TbClock className='inline mr-2' />{memberSinceText} on UrbanHive</p> {/* Added membership duration */}
 
                         </div>
-
                         <div className="md:w-3/4 md:pl-4">
                             <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
                             <ProfileProperties userProperties={userProperties} />

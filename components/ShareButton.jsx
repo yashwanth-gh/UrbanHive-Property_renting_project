@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { FaShare } from 'react-icons/fa';
+import { TbShare3,TbBrandFacebook, TbBrandWhatsapp, TbBrandTwitter, TbBrandLinkedin,TbMail, TbCopy   } from "react-icons/tb";
 import {
     FacebookShareButton,
     TwitterShareButton,
     WhatsappShareButton,
     EmailShareButton,
-    LinkedinShareButton,
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,
-    EmailIcon,
-    LinkedinIcon
+    LinkedinShareButton
 } from 'react-share';
 
 const ShareButton = ({ property }) => {
@@ -42,34 +37,35 @@ const ShareButton = ({ property }) => {
                 className="bg-foreground hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center"
                 onClick={toggleModal}
             >
-                <FaShare className='mr-3' /> Share Property
+                <TbShare3 className='mr-3' /> Share Property
             </button>
 
             {isModalOpen && (
                 <div className={`fixed inset-0 inset-y-0 w-full h-full bg-black bg-opacity-30 flex items-center justify-center z-50 transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
                     <div className={`bg-white p-6 rounded-lg shadow-lg w-full max-w-md transform transition-transform duration-300 ${isModalVisible ? 'scale-100' : 'scale-95'}`}>
                         <h2 className="text-xl mb-4">Share this Property</h2>
-                        <div className="flex justify-between mb-4">
+                        <div className="flex justify-evenly mb-4 items-center">
                             <FacebookShareButton url={shareUrl} hashtag='#urbanhive' quote={title}>
-                                <FacebookIcon size={32} round />
+                                <TbBrandFacebook size={30} className='bg-blue-500 rounded-full pt-1 pl-1 text-white' />
                             </FacebookShareButton>
                             <TwitterShareButton url={shareUrl} title={title}>
-                                <TwitterIcon size={32} round />
+                                <TbBrandTwitter size={30} className='bg-black rounded-full p-1 text-white' />
                             </TwitterShareButton>
                             <WhatsappShareButton url={shareUrl} title={title} separator=":: ">
-                                <WhatsappIcon size={32} round />
+                                <TbBrandWhatsapp size={30} className='bg-green-400 rounded-full p-1 text-white'/>
                             </WhatsappShareButton>
                             <EmailShareButton url={shareUrl} subject={title} body="Check this awesome property on UrbanHive">
-                                <EmailIcon size={32} round />
+                                <TbMail size={30} className='bg-red-500 rounded-full p-1 text-white' />
                             </EmailShareButton>
                             <LinkedinShareButton url={shareUrl} title={title} summary='Check this property on UrbanHive' source='UrbanHive'>
-                                <LinkedinIcon size={32} round />
+                                <TbBrandLinkedin size={30} className='bg-violet-800 rounded-full p-1 text-white' />
                             </LinkedinShareButton>
                         </div>
                         <button
                             className="bg-primary hover:opacity-90 text-white font-bold py-2 px-4 rounded-md mb-4 w-full"
                             onClick={handleCopyUrl}
                         >
+                            <TbCopy className='mr-3 inline-block' />
                             Copy URL
                         </button>
                         <button

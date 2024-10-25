@@ -1,8 +1,7 @@
 "use client"
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react'
-import { FaBuilding, FaRegBuilding } from 'react-icons/fa'
-import { TbHomeSearch } from 'react-icons/tb';
+import React, { useEffect, useRef, useState } from 'react';
+import { TbHomeSearch, TbBuilding } from 'react-icons/tb';
 import Typed from 'typed.js';
 
 const PropertySearchForm = () => {
@@ -42,8 +41,13 @@ const PropertySearchForm = () => {
 
     return (
         <div className='mt-3 md:mt-8 lg:mt-10 mx-auto max-w-4xl w-full'>
-            <div className={`${pathname == '/properties/search' ? 'hidden' : 'inline-block'} hidden md:inline-block w-fit bg-sky-300 bg-opacity-20 backdrop-blur-lg rounded-t-2xl px-4 py-3`}>
-                <p className='montserrat-semibold text-primary-foreground'> Search your potential <span className='text-primary font-bold ' ref={heroTitleRef}></span></p>
+            <div
+                className={`${pathname === "/properties/search" ? "hidden" : "hidden md:inline-block"
+                    } w-fit bg-sky-300 bg-opacity-20 backdrop-blur-lg rounded-t-2xl px-4 py-3`}
+            >
+                <p className="montserrat-semibold text-primary-foreground">
+                    Search your potential <span className="text-primary font-bold" ref={heroTitleRef}></span>
+                </p>
             </div>
             <form
                 className=" flex flex-col md:flex-row items-center  py-6 px-6 bg-sky-100 bg-opacity-20 backdrop-blur-lg rounded-2xl"
@@ -63,7 +67,7 @@ const PropertySearchForm = () => {
                 <div className="w-full md:w-2/5 md:pl-2 flex">
                     <label htmlFor="property-type" className="sr-only">Property Type</label>
                     <div className='bg-primary-foreground text-sm text-border flex justify-normal items-center pl-4 pr-2 rounded-l-lg border-r-2'>
-                        <FaRegBuilding />
+                        <TbBuilding />
                         <p className='text-nowrap'>&nbsp;Type</p>
                     </div>
                     <select

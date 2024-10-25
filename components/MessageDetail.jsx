@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
-import { FaArrowCircleLeft, FaGlasses, FaTrash } from "react-icons/fa";
+import { TbSunglasses,TbTrash,TbArrowBackUp   } from "react-icons/tb";
+
 import markMessageAsRead from "@/app/actions/markMessageAsRead";
 import deleteMessage from "@/app/actions/deleteMessage"; // Import deleteMessage action
 import { toast } from "react-toastify";
@@ -61,7 +62,7 @@ const MessageDetail = ({ message, onBack }) => {
                     className="text-primary-foreground bg-primary px-3 py-1 mb-4 rounded-md active:bg-opacity-75"
                     onClick={onBack}
                 >
-                    <FaArrowCircleLeft className="inline mr-2" />
+                    <TbArrowBackUp  className="inline mr-2" />
                     Back
                 </button>
             )}
@@ -102,14 +103,14 @@ const MessageDetail = ({ message, onBack }) => {
                     className="bg-foreground text-primary-foreground px-2 py-2 rounded-md hover:opacity-80"
                     onClick={handleReadClick}
                 >
-                    <FaGlasses className="inline mr-3 text-md" />
+                    <TbSunglasses className="inline mr-3 text-md" />
                     {isRead ? "Mark as Unread" : "Mark as Read"}
                 </button>
                 <button
                     className="bg-primary text-primary-foreground px-2 py-2 rounded-md hover:bg-red-500"
                     onClick={handleDeleteClick}
                 >
-                    {isDeleting ? <MiniSpinner /> : <FaTrash className="inline mr-3 text-md" />}
+                    {isDeleting ? <MiniSpinner /> : <TbTrash  className="inline mr-3 text-md" />}
                     Delete Query
                 </button>
             </div>
