@@ -24,21 +24,24 @@ const MainLayout = ({ children }) => {
                         <link rel="preconnect" href="https://fonts.googleapis.com" />
                         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='' />
                         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-                    </head>
-                    <body>
-                        <Navbar />
-                        <div>{children}</div>
-                        <Footer />
-                        <ToastContainer
-                            position="top-center"
-                            autoClose={5000}
-                            theme="colored"
-                            transition={Flip} />
-                    </body>
-                </html>
-            </UnreadMessageProvider>
-        </AuthProvider>
-    )
+                        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=''/>
+                        <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet" />
+                            </head>
+                            <body>
+                                <Navbar />
+                                <div>{children}</div>
+                                <Footer />
+                                <ToastContainer
+                                    position="top-center"
+                                    autoClose={5000}
+                                    theme="colored"
+                                    transition={Flip} />
+                            </body>
+                        </html>
+                    </UnreadMessageProvider>
+                </AuthProvider>
+                )
 }
 
-export default MainLayout
+                export default MainLayout

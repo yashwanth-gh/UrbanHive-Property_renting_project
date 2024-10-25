@@ -106,6 +106,13 @@
     font-weight: 800;
     font-style: normal;
   }
+
+  .playwrite-400 {
+    font-family: "Playwrite GB S", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
 }
 
 @layer base {
@@ -377,6 +384,14 @@
   }
 
   .about-content {
-    @apply absolute bottom-1/2 translate-y-3/4 text-center px-1 lg:px-28 mx-auto flex flex-col ;
+    @apply absolute bottom-1/2 translate-y-3/4 text-center px-1 lg:px-28 mx-auto flex flex-col;
+  }
+
+  .about-border {
+    border-radius: 72% 28% 29% 71% / 62% 73% 27% 38%;
+  }
+  .about-pattern {
+    background-color: #e5e5f7;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 5px ), repeating-linear-gradient( #444cf755, #444cf7 );
   }
 }
