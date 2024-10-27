@@ -289,7 +289,7 @@
 
   .half-yellow-bg {
     background: linear-gradient(to right, #fde047 50%, transparent 50%);
-}
+  }
 
   /*^ -----------------checkbox style END------------------  */
 
@@ -397,15 +397,71 @@
   }
   .about-pattern {
     background-color: #fff36d;
-    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #ffc9c9 5px ), repeating-linear-gradient( #ffd900, #ff7b6f );
+    background-image: repeating-radial-gradient(
+        circle at 0 0,
+        transparent 0,
+        #ffc9c9 5px
+      ),
+      repeating-linear-gradient(#ffd900, #ff7b6f);
   }
 
   path {
     fill: transparent;
   }
-  
+
   text {
     fill: #000;
-
   }
+
+  .about-h2 {
+    @apply text-2xl md:text-3xl playwrite-400 text-[#FFD700] text-center mt-8 mb-12 font-bold;
+  }
+
+  .overlay-gradient {
+    background-color: #ff0000;
+    background-image: linear-gradient(
+      160deg,
+      #ff0000 0%,
+      #ff6969 25%,
+      #fff1aa 54%,
+      #ffe762 77%,
+      #ffd700 100%
+    );
+  }
+
+  /* overlay animation: */
+  /* Add to your global CSS or module CSS file */
+/* Add to your global CSS or module CSS file */
+@keyframes slideIn {
+  0% {
+      transform: translateX(100%); /* Start off-screen to the right */
+      opacity: 0; /* Start invisible */
+  }
+  100% {
+      transform: translateX(0); /* End at its normal position */
+      opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes slideOut {
+  0% {
+      transform: translateX(0); /* Start at its normal position */
+      opacity: 1; /* Fully visible */
+  }
+  100% {
+      transform: translateX(100%); /* End off-screen to the right */
+      opacity: 0; /* Fully invisible */
+  }
+}
+
+/* Animation classes */
+.overlay-enter {
+  animation: slideIn 0.5s ease forwards; /* Animation for opening */
+}
+
+.overlay-exit {
+  animation: slideOut 0.3s ease backwards; /* Animation for closing */
+}
+
+
 }

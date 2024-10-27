@@ -1,4 +1,5 @@
 import AboutHero from '@/components/AboutHero';
+import AboutStory from '@/components/AboutStory';
 import AboutTeam from '@/components/AboutTeam';
 import React from 'react';
 
@@ -8,6 +9,7 @@ const AboutPage = () => {
         <section>
             <AboutHero/>
             <AboutTeam/>
+            <AboutStory/>
         </section>
     )
 

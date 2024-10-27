@@ -81,10 +81,6 @@ const AboutTeam = () => {
                 </svg>
 
             </div>
-
-            <div>
-                <h2 className='text-xl md:text-3xl font-bold playwrite-400 text-center'>Our Values</h2>
-            </div>
         </div>
     )
 }

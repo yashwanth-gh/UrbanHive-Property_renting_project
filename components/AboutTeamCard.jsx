@@ -4,7 +4,7 @@ import React from 'react';
 const AboutTeamCard = ({ image, name, role }) => {
     return (
         <div className="mb-8 hover:text-center transition-all duration-150">
-            <div className='py-3 mb-2 md:mb-4 flex items-center justify-center bg-[#5eead4] about-pattern rounded-md hover:rounded-2xl transition-all duration-150 '>
+            <div className='py-3 mb-2 md:mb-4 mt-6 hover:mt-2 flex items-center justify-center bg-[#5eead4] about-pattern rounded-md hover:rounded-2xl  hover:border-b-4 hover:border-r-4 border-foreground transition-all duration-150'>
                 <Image
                     src={image}
                     alt={name}

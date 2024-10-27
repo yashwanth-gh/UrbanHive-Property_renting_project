@@ -4,7 +4,6 @@ import user from '@/assets/images/user.png';
 import DB_Connect from '@/config/DB_Connect';
 import { getSessionUser } from '@/utils/getSessionUser';
 import { TbClock,TbBrandMailgun,TbCurrentLocation} from "react-icons/tb";
-
 import User from '@/models/User';
 import { getUserDuration } from '@/utils/calculateTime';
 import Property from '@/models/Property';

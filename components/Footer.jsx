@@ -17,15 +17,15 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="mb-6 md:mb-2">
-                    <div className="flex justify-center gap-6 md:gap-10">
+                    <div className="flex justify-center gap-6 md:gap-10 w-fit m-auto">
                         <Link href="https://www.linkedin.com/in/yashwanth-b-m-4a4a09227/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                            <TbBrandLinkedin  className='text-2xl' />
+                            <TbBrandLinkedin  className='text-2xl text-primary-foreground bg-violet-800 rounded-md p-1 box-content' />
                         </Link>
                         <Link href="https://x.com/yashwanthbm36" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                            <TbBrandTwitter    className='text-2xl' />
+                            <p className='text-2xl text-primary-foreground bg-foreground rounded-md px-2 box-content'>𝕏</p>
                         </Link>
                         <Link href="https://github.com/yashwanth-gh" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <TbBrandGithub  className='text-2xl' />
+                            <TbBrandGithub  className='text-2xl text-primary-foreground bg-gray-700 rounded-md p-1 box-content' />
                         </Link>
                     </div>
                 </div>

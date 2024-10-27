@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { TbEdit, TbTrash } from "react-icons/tb";
-
 import addPropImage from '@/public/images/addProp.png';
 import deleteProperty from '@/app/actions/deleteProperty';
 import MiniSpinner from '@/components/MiniSpinner'; // Adjust the path as needed
