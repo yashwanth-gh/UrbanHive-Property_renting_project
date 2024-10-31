@@ -16,6 +16,7 @@ import PropertyContactForm from '@/components/PropertyContactForm';
 import { useSession } from 'next-auth/react';
 import Accordion from '@/components/Accordion';
 import AccordionItem from '@/components/AccordionItem';
+import PropertyPayment from '@/components/PropertyPayment';
 
 const PropertyPage = () => {
     const [loading, setLoading] = useState(true);
@@ -93,6 +94,7 @@ const PropertyPage = () => {
                                     <BookmarkButton property={property} />
                                     <ShareButton property={property} />
                                 </div>
+                                <PropertyPayment property={property}/>
                                 <Accordion>
                                     <AccordionItem title="Contact manager">
                                         <PropertyContactForm property={property} />

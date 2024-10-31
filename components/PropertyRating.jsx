@@ -15,7 +15,8 @@ const PropertyRating = ({ rating, textSize = 'text-sm', showAllStars = true }) =
     if (!showAllStars) {
         return (
             <div className={`flex justify-start items-center ${textSize}`}>
-                <TbStar className='text-foreground bg-yellow-300 p-0.5 text-lg rounded-sm border border-black' />
+                {/* <TbStar className='text-foreground bg-yellow-300 p-0.5 text-lg rounded-sm border border-black' /> */}
+                ⭐
                 <p className={`${textSize} text-foreground`}>&nbsp;{rating}/5</p>
             </div>
         );

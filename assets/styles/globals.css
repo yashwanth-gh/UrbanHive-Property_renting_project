@@ -463,5 +463,14 @@
   animation: slideOut 0.3s ease backwards; /* Animation for closing */
 }
 
+/*^ ________________________Payment gateway_____________________ */
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  20%, 100% { transform: translateX(150%); }
+}
+
+.animate-shine {
+  animation: shine 4s linear infinite;
+}
 
 }

@@ -57,7 +57,7 @@ const BookmarkButton = ({ property }) => {
 
     return (
         <button
-            className={`${isBookmarked ? 'bg-destructive' : 'bg-primary'} hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center`}
+            className={`${isBookmarked ? 'bg-destructive' : 'bg-[#75a842]'} hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center`}
             disabled={loading}
             onClick={handleClick}
         >

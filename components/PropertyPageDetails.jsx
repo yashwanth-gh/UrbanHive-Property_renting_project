@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import {TbBath,TbRuler,TbBed,TbCurrentLocation,TbBuilding,TbCaretUpDown  } from 'react-icons/tb';
-import PropertyMap from './PropertyMap';
-import PropertyReviews from './PropertyReviews';
-import PropertyRating from './PropertyRating'; 
+import PropertyMap from '@/components/PropertyMap';
+import PropertyReviews from '@/components/PropertyReviews';
+import PropertyRating from '@/components/PropertyRating'; 
 import Image from 'next/image';
 import { formatTimeElapsed } from '@/utils/calculateTime';
-import PropertyReviewButton from './PropertyReviewButton';
-import PropertyAmenities from './PropertyAmenities';
+import PropertyReviewButton from '@/components/PropertyReviewButton';
+import PropertyAmenities from '@/components/PropertyAmenities';
+import formatNumberToIndian from '@/utils/ConvertNumberToIndianSystem';
 
-const formatNumberToIndian = (number) => number.toLocaleString('en-IN');
+
 
 const PropertyPageDetails = ({ property }) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -38,7 +39,7 @@ const PropertyPageDetails = ({ property }) => {
           </p>
         </div>
 
-        <h3 className="text-lg font-bold my-6 bg-primary text-white p-2">Rates & Options</h3>
+        <h3 className="text-lg font-bold my-6 bg-primary text-white p-2">Rates & Options <span className='text-sm font-normal ml-2'>(incl. of all taxes and charges)</span> </h3>
         <div className="flex flex-col md:flex-row justify-around flex-wrap">
           {property?.rates?.nightly && (
             <div className="flex items-center justify-center mb-4 border-b border-gray-200 md:border-b-0 pb-4 md:pb-0">
@@ -58,6 +59,7 @@ const PropertyPageDetails = ({ property }) => {
               <div className="text-primary mr-2 font-medium self-end">&nbsp;/monthly</div>
             </div>
           )}
+
         </div>
       </div>
 

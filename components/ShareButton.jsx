@@ -34,14 +34,14 @@ const ShareButton = ({ property }) => {
     return (
         <>
             <button
-                className="bg-foreground hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center"
+                className="bg-blue-500 hover:opacity-90 text-white font-bold w-full py-2 px-4 rounded-md hover:rounded-xl flex items-center justify-center"
                 onClick={toggleModal}
             >
                 <TbShare3 className='mr-3' /> Share Property
             </button>
 
             {isModalOpen && (
-                <div className={`fixed inset-0 inset-y-0 w-full h-full bg-black bg-opacity-30 flex items-center justify-center z-50 transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`fixed inset-0 inset-y-0 w-full h-full bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
                     <div className={`bg-white p-6 rounded-lg shadow-lg w-full max-w-md transform transition-transform duration-300 ${isModalVisible ? 'scale-100' : 'scale-95'}`}>
                         <h2 className="text-xl mb-4">Share this Property</h2>
                         <div className="flex justify-evenly mb-4 items-center">
